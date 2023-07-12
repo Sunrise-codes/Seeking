@@ -112,9 +112,9 @@ public class RenderManager
     private Map<String, RenderPlayer> skinMap = Maps.<String, RenderPlayer>newHashMap();
     private RenderPlayer playerRenderer;
     private FontRenderer textRenderer;
-    private double renderPosX;
-    private double renderPosY;
-    private double renderPosZ;
+    public double renderPosX;
+    public double renderPosY;
+    public double renderPosZ;
     public TextureManager renderEngine;
     public World worldObj;
     public Entity livingPlayer;
