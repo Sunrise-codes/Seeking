@@ -1,9 +1,12 @@
 package me.seeking.module;
 
 import me.seeking.Seeking;
+import me.seeking.value.Value;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.input.Mouse;
+
+import java.util.ArrayList;
 
 /**
  * This file is a part of Seeking Client.
@@ -18,6 +21,7 @@ public class Module {
     private double x, y, width, height;
     private boolean needNoti;
     private boolean dragging = false;
+    public ArrayList<Value> valuesList = new ArrayList<>();
 
     public Module(String name, ModuleType moduleType) {
         this.name = name;
@@ -83,6 +87,12 @@ public class Module {
             if(needNoti){
 
             }
+        }
+    }
+
+    public void addValues(Value... values){
+        for(Value v : values){
+            valuesList.add(v);
         }
     }
 
