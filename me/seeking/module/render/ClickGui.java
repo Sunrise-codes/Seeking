@@ -10,6 +10,7 @@ import org.lwjgl.input.Keyboard;
 public class ClickGui extends Module {
     public ClickGui(){
         super("ClickGui", ModuleType.Render);
+        this.setKey(Keyboard.KEY_RSHIFT);
     }
 
     @Override
