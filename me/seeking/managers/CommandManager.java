@@ -1,9 +1,6 @@
 package me.seeking.managers;
 
-import me.seeking.commands.BindCommand;
-import me.seeking.commands.GetLWJGLCommand;
-import me.seeking.commands.HelpCommand;
-import me.seeking.commands.ToggleCommand;
+import me.seeking.commands.*;
 import me.seeking.utils.PlayerUtil;
 
 import java.util.HashMap;
@@ -34,6 +31,7 @@ public class CommandManager {
         commands.put(new String[]{"bind", "b"}, new BindCommand());
         commands.put(new String[]{"toggle", "t"}, new ToggleCommand());
         commands.put(new String[]{"getLWJGL", "getL"}, new GetLWJGLCommand());
+        commands.put(new String[]{"qq", "esu"}, new ESUCommand());
     }
 
     public boolean processCommand(String rawMessage) {
