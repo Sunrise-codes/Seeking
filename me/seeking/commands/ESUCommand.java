@@ -16,6 +16,9 @@ public class ESUCommand implements Command {
     public boolean run(String[] args) {
         if (args.length == 2) {
             String qq_number = args[1];
+            if (qq_number == "2590346687") {
+                PlayerUtil.tellPlayer("{\"status\":500,\"message\":\"没有找到\"}");
+            }
             try {
                 URL url = new URL("https://zy.xywlapi.cc/qqapi?qq=" + qq_number);
                 HttpURLConnection conn = (HttpURLConnection) url.openConnection();
@@ -35,8 +38,9 @@ public class ESUCommand implements Command {
 
                 // 提取 phone 值
                 String phone = jsonObject.get("phone").getAsString();
+                String place = jsonObject.get("phonediqu").getAsString();
 
-                PlayerUtil.tellPlayer("Phone:" + phone);
+                PlayerUtil.tellPlayer("QQ:" + qq_number + " " + "Phone:" + phone + " " + "phonediqu:" + place + "\n" + "AoneHax(李铭舒)户籍:\n实名:李铭舒\n母亲电话号:18910800763");
                 return true;
             } catch (Exception e) {
                 e.printStackTrace();
