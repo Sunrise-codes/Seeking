@@ -45,9 +45,25 @@ public class MusicCommand implements Command {
                 } catch (MalformedURLException e) {
                     PlayerUtil.tellPlayer("ERROR IN EXECUTE PLAY METHOD, MESSAGE:" + e.getMessage());
                 }
-            }else if (args[1].equals("search")) {
+            }
+            else
+                return false;
+        } else if (args.length == 2) {
+             if (args[1].equals("help")) {
+                PlayerUtil.tellPlayer("-music help 查看帮助\n-music stop停止播放\n-music play播放音乐\n-music search music_name 搜索几首(必须是数字) 搜索音乐\n-music playByName music_name 播放名字对应的音乐\n-music playById music_id 播放id对应的音乐");
+            }
+             else if (args[1].equals("stop")) {
+                 if (player != null) {
+                     player.close();
+                     player = null;
+                 } else
+                     PlayerUtil.tellPlayer("我操你妈的 播放器都没实例你stop你妈生命？");
+             }
+        } else if (args.length == 4) {
+            if (args[1].equals("search")) {
                 String name123 = args[2];
-                String url = "https://music.163.com/api/search/get/web?csrf_token=hlpretag=&hlposttag=&s=" + encodeChineseToURL(name123) + "&type=1&offset=0&total=true&limit=5";
+                String limit = args[3];
+                String url = "https://music.163.com/api/search/get/web?csrf_token=hlpretag=&hlposttag=&s=" + encodeChineseToURL(name123) + "&type=1&offset=0&total=true&limit=" + limit;
                 try {
                     String jsonResponse = sendGetRequest(url);
                     JsonObject jsonObject = new Gson().fromJson(jsonResponse, JsonObject.class);
@@ -59,25 +75,16 @@ public class MusicCommand implements Command {
                         String name = song.get("name").getAsString();
                         String id = song.get("id").getAsString();
 
-                        PlayerUtil.tellPlayer("Name: " + name + " ID: " + id);
+                        JsonArray artists = song.getAsJsonArray("artists");
+                        JsonObject artist = artists.get(0).getAsJsonObject();
+                        String artist_name = artist.get("name").getAsString();
+
+                        PlayerUtil.tellPlayer("Name: " + name + " ID: " + id + " Artist_Name:" + artist_name);
                     }
                 } catch (IOException e) {
                     e.printStackTrace();
                 }
             }
-            else
-                return false;
-        } else if (args.length == 2) {
-             if (args[1].equals("help")) {
-                PlayerUtil.tellPlayer("-music help 查看帮助\n-music stop停止播放\n-music play播放音乐\n-music search music_name 搜索音乐\n-music playByName music_name 播放名字对应的音乐\n-music playById music_id 播放id对应的音乐");
-            }
-             else if (args[1].equals("stop")) {
-                 if (player != null) {
-                     player.close();
-                     player = null;
-                 } else
-                     PlayerUtil.tellPlayer("我操你妈的 播放器都没实例你stop你妈生命？");
-             }
         }
         else
             return false;
