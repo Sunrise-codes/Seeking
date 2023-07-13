@@ -142,7 +142,7 @@ public class Module {
             if (!Mouse.isButtonDown(0)) {
                 this.dragging = false;
             }
-            setY(mouseY);
+            setX(mouseX);
             setY(mouseY);
         }
     }
