@@ -8,6 +8,8 @@ import me.seeking.managers.CommandManager;
 import me.seeking.managers.FileManager;
 import me.seeking.managers.ModuleManager;
 import me.seeking.module.Module;
+import me.seeking.ui.font.CFontRenderer;
+import me.seeking.ui.font.FontLoaders;
 import org.lwjgl.opengl.Display;
 
 import java.util.List;
@@ -36,6 +38,9 @@ public class Seeking {
                 e.printStackTrace();
             }
         }).start();
+        FontLoaders.font16 = new CFontRenderer(FontLoaders.getFont(16), true, true);
+        FontLoaders.font18 = new CFontRenderer(FontLoaders.getFont(18), true, true);
+        FontLoaders.fontBig22 = new CFontRenderer(FontLoaders.getBigFont(22), true, true);
         moduleManager = new ModuleManager();
         moduleManager.addModules();
         eventManager = new EventManager();

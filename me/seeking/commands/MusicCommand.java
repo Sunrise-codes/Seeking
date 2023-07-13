@@ -16,7 +16,6 @@ public class MusicCommand implements Command {
     public static Player player;
     @Override
     public boolean run(String[] args) {
-        PlayerUtil.tellPlayer(args[1]);
         if(args[1].equals("playByName")){
             StringBuilder name = new StringBuilder();
             if(args.length > 2){
