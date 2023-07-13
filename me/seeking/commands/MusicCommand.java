@@ -16,38 +16,38 @@ public class MusicCommand implements Command {
     public static Player player;
     @Override
     public boolean run(String[] args) {
-        if(args[1].equals("playByName")){
-            StringBuilder name = new StringBuilder();
-            if(args.length > 2){
-                for (int i = 2; i < args.length; i++){
-                    name.append(args[i]+" ");
+        if(args.length > 0) {
+            if (args[1].equals("playByName")) {
+                StringBuilder name = new StringBuilder();
+                if (args.length > 2) {
+                    for (int i = 2; i < args.length; i++) {
+                        name.append(args[i] + " ");
+                    }
                 }
-            }
-            try {
-                play(getUrl(MusicAPI.getIdByName(name.toString())));
-                PlayerUtil.tellPlayer("Now Playing:"+name);
-            } catch (IOException e) {
-                PlayerUtil.tellPlayer("There is a exception when API trying to get MusicID:"+e.getMessage());
-                e.printStackTrace();
-            }
-        }else
-        if(args[1].equals("playById")){
-            try {
-                play(getUrl(args[2]));
-            } catch (MalformedURLException e) {
-                PlayerUtil.tellPlayer("ERROR IN EXECUTE PLAY METHOD, MESSAGE:"+e.getMessage());
-            }
-        }else
-        if(args[1].equals("stop")){
-            if(player != null) {
-                player.close();
-                player = null;
-            }
-            else
-                PlayerUtil.tellPlayer("我操你妈的 播放器都没实例你stop你妈生命？");
+                try {
+                    play(getUrl(MusicAPI.getIdByName(name.toString())));
+                    PlayerUtil.tellPlayer("Now Playing:" + name);
+                } catch (IOException e) {
+                    PlayerUtil.tellPlayer("There is a exception when API trying to get MusicID:" + e.getMessage());
+                    e.printStackTrace();
+                }
+            } else if (args[1].equals("playById")) {
+                try {
+                    play(getUrl(args[2]));
+                } catch (MalformedURLException e) {
+                    PlayerUtil.tellPlayer("ERROR IN EXECUTE PLAY METHOD, MESSAGE:" + e.getMessage());
+                }
+            } else if (args[1].equals("stop")) {
+                if (player != null) {
+                    player.close();
+                    player = null;
+                } else
+                    PlayerUtil.tellPlayer("我操你妈的 播放器都没实例你stop你妈生命？");
+            } else
+                return false;
         }else
             return false;
-            return true;
+        return true;
     }
 
     @Override
