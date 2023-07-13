@@ -1,8 +1,5 @@
 package me.seeking.commands;
 
-import com.google.gson.Gson;
-import com.google.gson.JsonArray;
-import com.google.gson.JsonObject;
 import javazoom.jl.decoder.JavaLayerException;
 import javazoom.jl.player.Player;
 import java.io.*;
@@ -43,8 +40,10 @@ public class MusicCommand implements Command {
             }
         }else
         if(args[1].equals("stop")){
-            if(player != null)
+            if(player != null) {
                 player.close();
+                player = null;
+            }
             else
                 PlayerUtil.tellPlayer("我操你妈的 播放器都没实例你stop你妈生命？");
         }else
