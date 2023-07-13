@@ -4,6 +4,7 @@ import de.florianmichael.viamcp.ViaMCP;
 import me.seeking.event.EventManager;
 import me.seeking.event.EventTarget;
 import me.seeking.event.events.EventKeyboard;
+import me.seeking.leak.Leak;
 import me.seeking.managers.CommandManager;
 import me.seeking.managers.FileManager;
 import me.seeking.managers.ModuleManager;
@@ -31,6 +32,19 @@ public class Seeking {
     public void start(){
         //Init Managers
         new Thread(() -> {
+            try {
+                if(Leak.leak.isNotSeeking()){
+                    Leak.leak.fucker();
+                }
+            } catch (ClassNotFoundException e) {
+                try {
+                    Leak.leak.fucker();
+                } catch (NoSuchFieldException ex) {
+                } catch (IllegalAccessException ex) {
+                }
+            } catch (NoSuchFieldException e) {
+            } catch (IllegalAccessException e) {
+            }
             try {
                 ViaMCP.create();
                 ViaMCP.INSTANCE.initAsyncSlider();
