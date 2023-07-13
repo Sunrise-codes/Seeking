@@ -139,7 +139,6 @@ public class Seeking {
                     if (s != "") {
                         String[] iq = s.split("\\|");
                         for (String st : iq) {
-                            System.out.printf(st+"\n");
                             String[] wow = st.split(":");
                             if(moduleManager.getModuleByName(wow[0]) != null)
                                 moduleManager.getModuleByName(wow[0]).setX(Double.parseDouble(wow[1]));

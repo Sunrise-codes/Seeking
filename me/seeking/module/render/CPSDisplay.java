@@ -34,7 +34,7 @@ public class CPSDisplay extends Module {
         RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
         Gui.drawRect(getX(), getY(), getX()+getWidth(), getY()+getHeight(), new Color(0, 0, 0, 135).getRGB());
         //mc.fontRendererObj.drawStringWithShadow(getCPS()+" CPS", (float) (getX()+13), (float) (getY()+6), -1);
-        FontLoaders.font16.drawStringWithShadow(getCPS()+" CPS", (float) (getX()+13), (float) (getY()+6), -1);
+        FontLoaders.font16.drawStringWithShadow(getCPS()+" CPS", (float) (getX()+16), (float) (getY()+6), -1);
     }
     @EventTarget
     public void onUpdate(EventUpdate e){
