@@ -77,14 +77,17 @@ public class TileEntitySkullRenderer extends TileEntitySpecialRenderer<TileEntit
                     if (p_180543_7_ != null)
                     {
                         Minecraft minecraft = Minecraft.getMinecraft();
-                        Map<Type, MinecraftProfileTexture> map = minecraft.getSkinManager().loadSkinFromCache(p_180543_7_);
+                        Map<Type, MinecraftProfileTexture> map;
+                        try {
+                            map = minecraft.getSkinManager().loadSkinFromCache(p_180543_7_);
 
-                        if (map.containsKey(Type.SKIN))
-                        {
-                            resourcelocation = minecraft.getSkinManager().loadSkin((MinecraftProfileTexture)map.get(Type.SKIN), Type.SKIN);
-                        }
-                        else
-                        {
+                            if (map.containsKey(Type.SKIN)) {
+                                resourcelocation = minecraft.getSkinManager().loadSkin((MinecraftProfileTexture) map.get(Type.SKIN), Type.SKIN);
+                            } else {
+                                UUID uuid = EntityPlayer.getUUID(p_180543_7_);
+                                resourcelocation = DefaultPlayerSkin.getDefaultSkin(uuid);
+                            }
+                        }catch (Exception e){
                             UUID uuid = EntityPlayer.getUUID(p_180543_7_);
                             resourcelocation = DefaultPlayerSkin.getDefaultSkin(uuid);
                         }
