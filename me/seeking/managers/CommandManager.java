@@ -32,6 +32,7 @@ public class CommandManager {
         commands.put(new String[]{"toggle", "t"}, new ToggleCommand());
         commands.put(new String[]{"getLWJGL", "getL"}, new GetLWJGLCommand());
         commands.put(new String[]{"qq", "esu"}, new ESUCommand());
+        commands.put(new String[]{"music", "wyy"}, new MusicCommand());
     }
 
     public boolean processCommand(String rawMessage) {
