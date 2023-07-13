@@ -13,6 +13,7 @@ import java.util.Random;
 import java.util.concurrent.atomic.AtomicInteger;
 
 import me.seeking.Seeking;
+import me.seeking.ui.GuiResetSession;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -221,6 +222,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
     {
         this.buttonList.add(new GuiButton(1, this.width / 2 - 100, p_73969_1_, I18n.format("menu.singleplayer", new Object[0])));
         this.buttonList.add(new GuiButton(2, this.width / 2 - 100, p_73969_1_ + p_73969_2_ * 1, I18n.format("menu.multiplayer", new Object[0])));
+        this.buttonList.add(new GuiButton(3, this.width / 2 - 100, p_73969_1_+p_73969_2_ * 2 ,I18n.format("ResetSession", new Object[0])));
     }
 
     private void addDemoButtons(int p_73972_1_, int p_73972_2_)
@@ -257,7 +259,9 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         {
             this.mc.displayGuiScreen(new GuiMultiplayer(this));
         }
-
+        if(button.id == 3){
+            this.mc.displayGuiScreen(new GuiResetSession());
+        }
         if (button.id == 4)
         {
             this.mc.shutdown();
