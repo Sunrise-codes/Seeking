@@ -24,15 +24,17 @@ public class MusicCommand implements Command {
     public boolean run(String[] args) {
         if(args.length == 3) {
             if (args[1].equals("playByName")) {
-                StringBuilder name = new StringBuilder();
+                String name1 = args[2];
+                String name = encodeChineseToURL(String.valueOf(name1));
+                StringBuilder name2 =new StringBuilder(name);
                 if (args.length > 2) {
                     for (int i = 2; i < args.length; i++) {
-                        name.append(args[i] + " ");
+                        name2.append(args[i] + " ");
                     }
                 }
                 try {
                     play(getUrl(MusicAPI.getIdByName(name.toString())));
-                    PlayerUtil.tellPlayer("Now Playing:" + name);
+                    PlayerUtil.tellPlayer("Now Playing:" + name1);
                 } catch (IOException e) {
                     PlayerUtil.tellPlayer("There is a exception when API trying to get MusicID:" + e.getMessage());
                     e.printStackTrace();
