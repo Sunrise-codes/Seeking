@@ -12,6 +12,8 @@ import java.net.*;
 import me.miliblue.netease.MusicAPI;
 import me.seeking.managers.Command;
 import me.seeking.utils.PlayerUtil;
+import static me.drqzszn.ChineseURLEncoder.containsChinese;
+import static me.drqzszn.ChineseURLEncoder.encodeChineseToURL;
 
 /**
  * This file is a part of Seeking Client.
@@ -43,8 +45,7 @@ public class MusicCommand implements Command {
                 }
             }else if (args[1].equals("search")) {
                 String name123 = args[2];
-                String url = "https://music.163.com/api/search/get/web?csrf_token=hlpretag=&hlposttag=&s=" + name123 + "&type=1&offset=0&total=true&limit=5";
-
+                String url = "https://music.163.com/api/search/get/web?csrf_token=hlpretag=&hlposttag=&s=" + encodeChineseToURL(name123) + "&type=1&offset=0&total=true&limit=5";
                 try {
                     String jsonResponse = sendGetRequest(url);
                     JsonObject jsonObject = new Gson().fromJson(jsonResponse, JsonObject.class);
