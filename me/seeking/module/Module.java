@@ -142,14 +142,8 @@ public class Module {
             if (!Mouse.isButtonDown(0)) {
                 this.dragging = false;
             }
-            int x = (int) (mouseX);
-            int y = (int) (mouseY);
-                    if (Math.abs(x - getX()) > 5) {
-                        setX(x);
-                    }
-                    if (Math.abs(y - getY()) > 5) {
-                        setY(y);
-                    }
+            setY(mouseY);
+            setY(mouseY);
         }
     }
 

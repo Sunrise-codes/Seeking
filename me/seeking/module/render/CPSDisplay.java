@@ -25,7 +25,7 @@ public class CPSDisplay extends Module {
         super("CPSDisplay", ModuleType.Render);
         setX(170);
         setY(0);
-        setWidth(57);
+        setWidth(60);
         setHeight(20);
     }
 
