@@ -50,6 +50,8 @@ public class CFontRenderer extends CFont {
 	}
 
 	public float drawString(String text, double x, double y, int color, boolean shadow) {
+		GlStateManager.enableBlend();
+		GlStateManager.disableBlend();
 		x -= 1.0;
 		if (text == null) {
 			return 0.0f;
@@ -83,7 +85,6 @@ public class CFontRenderer extends CFont {
 			int size = text.length();
 			GlStateManager.enableTexture2D();
 			GlStateManager.bindTexture(this.tex.getGlTextureId());
-			GL11.glBindTexture((int) 3553, (int) this.tex.getGlTextureId());
 			int i = 0;
 			while (i < size) {
 				char character = text.charAt(i);

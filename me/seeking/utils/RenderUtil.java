@@ -6,6 +6,7 @@ import net.minecraft.client.renderer.Tessellator;
 import net.minecraft.client.renderer.WorldRenderer;
 import net.minecraft.client.renderer.vertex.DefaultVertexFormats;
 import net.minecraft.util.ResourceLocation;
+import org.lwjgl.opengl.GL11;
 
 import static org.lwjgl.opengl.GL11.*;
 import static org.lwjgl.opengl.GL11.glPopMatrix;
@@ -25,6 +26,30 @@ public class RenderUtil {
         drawTexturedRect(x, y - 9, width, 9, "paneltop");
         drawTexturedRect(x, y + height, width, 9, "panelbottom");
     }
+
+    public static void drawRect(float g2, float h2, float i2, float j2, int col1) {
+        float f2 = (float)(col1 >> 24 & 255) / 255.0f;
+        float f22 = (float)(col1 >> 16 & 255) / 255.0f;
+        float f3 = (float)(col1 >> 8 & 255) / 255.0f;
+        float f4 = (float)(col1 & 255) / 255.0f;
+        GL11.glPushMatrix();
+        GL11.glEnable(3042);
+        GL11.glDisable(3553);
+        GL11.glBlendFunc(770, 771);
+        GL11.glEnable(2848);
+        GL11.glColor4f(f22, f3, f4, f2);
+        GL11.glBegin(7);
+        GL11.glVertex2d(i2, h2);
+        GL11.glVertex2d(g2, h2);
+        GL11.glVertex2d(g2, j2);
+        GL11.glVertex2d(i2, j2);
+        GL11.glEnd();
+        GL11.glEnable(3553);
+        GL11.glDisable(3042);
+        GL11.glDisable(2848);
+        GL11.glPopMatrix();
+    }
+
 
     public static void drawTexturedRect(float x, float y, float width, float height, String image) {
         glPushMatrix();

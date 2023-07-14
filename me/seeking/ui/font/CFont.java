@@ -1,6 +1,6 @@
 /*
  * Decompiled with CFR 0_132.
- * 
+ *
  * Could not load the following classes:
  *  org.lwjgl.opengl.GL11
  */

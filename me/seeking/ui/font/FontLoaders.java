@@ -14,7 +14,7 @@ public abstract class FontLoaders {
 		Font font;
 		try {
 			InputStream is = Minecraft.getMinecraft().getResourceManager()
-					.getResource(new ResourceLocation("seeking/font/normal.otf")).getInputStream();
+					.getResource(new ResourceLocation("seeking/font/normal.ttf")).getInputStream();
 			font = Font.createFont(0, is);
 			font = font.deriveFont(0, size);
 		} catch (Exception ex) {
