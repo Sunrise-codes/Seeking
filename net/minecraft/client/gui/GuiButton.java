@@ -6,7 +6,7 @@ import net.minecraft.client.audio.SoundHandler;
 import net.minecraft.util.ResourceLocation;
 import me.seeking.module.client.CustomColor;
 import me.seeking.ui.font.FontLoaders;
-import me.seeking.utils.RenderUtils;
+import me.seeking.utils.RenderUtil;
 
 import java.awt.*;
 
@@ -96,15 +96,15 @@ public class GuiButton extends Gui {
         if (this.visible) {
             this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
             if (this.hovered) {
-                red = RenderUtils.toanim(red, CustomColor.getColor().getRed(), 4, 0.1f);
-                green = RenderUtils.toanim(green, CustomColor.getColor().getGreen(), 4, 0.1f);
-                blue = RenderUtils.toanim(blue, CustomColor.getColor().getBlue(), 4, 0.1f);
-                alpha = RenderUtils.toanim(alpha, 128, 4, 0.1f);
+                red = RenderUtil.toanim(red, CustomColor.getColor().getRed(), 4, 0.1f);
+                green = RenderUtil.toanim(green, CustomColor.getColor().getGreen(), 4, 0.1f);
+                blue = RenderUtil.toanim(blue, CustomColor.getColor().getBlue(), 4, 0.1f);
+                alpha = RenderUtil.toanim(alpha, 128, 4, 0.1f);
             } else {
-                red = RenderUtils.toanim(red, 0, 4, 0.1f);
-                green = RenderUtils.toanim(green, 0, 4, 0.1f);
-                blue = RenderUtils.toanim(blue, 0, 4, 0.1f);
-                alpha = RenderUtils.toanim(alpha, 64, 4, 0.1f);
+                red = RenderUtil.toanim(red, 0, 4, 0.1f);
+                green = RenderUtil.toanim(green, 0, 4, 0.1f);
+                blue = RenderUtil.toanim(blue, 0, 4, 0.1f);
+                alpha = RenderUtil.toanim(alpha, 64, 4, 0.1f);
             }
 
                 if(mc.thePlayer != null && mc.theWorld != null){
@@ -118,7 +118,7 @@ public class GuiButton extends Gui {
                     glStencilFunc(GL_ALWAYS, 1, 1);
                     glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
                     glColorMask(false, false, false, false);
-                    RenderUtils.drawRoundRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 4, new Color((int) red, (int) green, (int) blue, (int) alpha));
+                    RenderUtil.drawRoundRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 4, new Color((int) red, (int) green, (int) blue, (int) alpha));
 
                     glColorMask(true, true, true, true);
                     glStencilFunc(GL_EQUAL, 1, 1);
@@ -127,7 +127,7 @@ public class GuiButton extends Gui {
                 }
 
 
-            RenderUtils.drawRoundRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 4, new Color((int) red, (int) green, (int) blue, (int) alpha));
+            RenderUtil.drawRoundRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 4, new Color((int) red, (int) green, (int) blue, (int) alpha));
 
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;

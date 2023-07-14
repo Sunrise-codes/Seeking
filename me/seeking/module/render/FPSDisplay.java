@@ -4,7 +4,7 @@ import me.seeking.event.EventTarget;
 import me.seeking.event.events.EventRender2D;
 import me.seeking.module.Module;
 import me.seeking.ui.font.FontLoaders;
-import me.seeking.utils.RenderUtils;
+import me.seeking.utils.RenderUtil;
 import net.minecraft.client.gui.Gui;
 
 import java.awt.*;
@@ -24,7 +24,7 @@ public class FPSDisplay extends Module {
 
     @EventTarget
     public void render2D(EventRender2D e){
-        RenderUtils.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
+        RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
         Gui.drawRect(getX(), getY(), getX()+getWidth(), getY()+getHeight(), new Color(0, 0, 0, 135).getRGB());
         FontLoaders.font16.drawStringWithShadow(mc.getDebugFPS()+" FPS", (float) (getX()+10), (float) (getY()+6), -1);
     }
