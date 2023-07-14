@@ -33,7 +33,7 @@ public class GuiResetSession extends GuiScreen {
             String username = mc.getSession().getUsername();
             String playerID = mc.getSession().getPlayerID();
             String token = mc.getSession().getToken();
-            String sessiontype = mc.getSession().getSessionType().toString();
+            String sessiontype = mc.getSession().getType();
 
             if (tf.getId() == 0) {
                 tf.setText(username);
@@ -131,11 +131,11 @@ public class GuiResetSession extends GuiScreen {
 
                 if(tf.getId() != 4){
 
-                    if(tf.getText().equals("Fuck You! Error! Input code is shit wrong!")){
+                    if(tf.getText().equals("fuck u and suck my d1ck b1tch")){
                         String username = mc.getSession().getUsername();
                         String playerID = mc.getSession().getPlayerID();
                         String token = mc.getSession().getToken();
-                        String sessiontype = mc.getSession().getSessionType().toString();
+                        String sessiontype = mc.getSession().getType();
 
                         if (tf.getId() == 0) {
                             tf.setText(username);
@@ -194,7 +194,7 @@ public class GuiResetSession extends GuiScreen {
 
                         if(username == null || playerID == null || token == null || sessiontype == null){
                             if(tf1.getId() != 4){
-                                tf1.setText("Fuck You! Error! Input code is shit wrong!");
+                                tf1.setText("fuck u and suck my d1ck b1tch");
                             }
                             continue;
                         }

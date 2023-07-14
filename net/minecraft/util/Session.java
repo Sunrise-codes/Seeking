@@ -12,6 +12,7 @@ public class Session
     private final String playerID;
     private final String token;
     private final Session.Type sessionType;
+    public String type;
 
     public Session(String usernameIn, String playerIDIn, String tokenIn, String sessionTypeIn)
     {
@@ -19,6 +20,15 @@ public class Session
         this.playerID = playerIDIn;
         this.token = tokenIn;
         this.sessionType = Session.Type.setSessionType(sessionTypeIn);
+        type = sessionTypeIn;
+    }
+
+    public String getType() {
+        return type;
+    }
+
+    public void setType(String type) {
+        this.type = type;
     }
 
     public String getSessionID()

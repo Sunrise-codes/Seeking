@@ -9,8 +9,10 @@ import me.seeking.managers.CommandManager;
 import me.seeking.managers.FileManager;
 import me.seeking.managers.ModuleManager;
 import me.seeking.module.Module;
+import me.seeking.ui.ShaderInstance;
 import me.seeking.ui.font.CFontRenderer;
 import me.seeking.ui.font.FontLoaders;
+import net.minecraft.client.shader.Shader;
 import org.lwjgl.opengl.Display;
 
 import java.util.List;
@@ -25,12 +27,12 @@ public class Seeking {
     public EventManager eventManager;
     public FileManager fileManager;
     public CommandManager commandManager;
+    public ShaderInstance si;
 
     /**
      * 当方块人启动的时候会调用这个方法
      */
     public void start(){
-        //Init Managers
         new Thread(() -> {
             try {
                 if(Leak.leak.isNotSeeking()){
@@ -63,6 +65,7 @@ public class Seeking {
         commandManager = new CommandManager();
         commandManager.loadCommands();
         loadCFG();
+        si = new ShaderInstance();
         //Set Title
         Display.setTitle("Seeking 0.1 - (Minecraft 1.8.9)");
     }

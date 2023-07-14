@@ -6,6 +6,7 @@ import java.io.IOException;
 import java.util.List;
 
 import de.florianmichael.viamcp.ViaMCP;
+import me.seeking.Seeking;
 import net.minecraft.client.multiplayer.GuiConnecting;
 import net.minecraft.client.multiplayer.ServerData;
 import net.minecraft.client.multiplayer.ServerList;
@@ -344,11 +345,9 @@ public class GuiMultiplayer extends GuiScreen implements GuiYesNoCallback
     public void drawScreen(int mouseX, int mouseY, float partialTicks)
     {
         this.hoveringText = null;
-        this.drawDefaultBackground();
         this.serverListSelector.drawScreen(mouseX, mouseY, partialTicks);
         this.drawCenteredString(this.fontRendererObj, I18n.format("multiplayer.title", new Object[0]), this.width / 2, 20, 16777215);
         super.drawScreen(mouseX, mouseY, partialTicks);
-
         if (this.hoveringText != null)
         {
             this.drawHoveringText(Lists.newArrayList(Splitter.on("\n").split(this.hoveringText)), mouseX, mouseY);

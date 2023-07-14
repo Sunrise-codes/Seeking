@@ -1,5 +1,6 @@
 package net.minecraft.client.gui;
 
+import me.seeking.Seeking;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.Tessellator;
@@ -170,7 +171,8 @@ public abstract class GuiSlot
         {
             this.mouseX = mouseXIn;
             this.mouseY = mouseYIn;
-            this.drawBackground();
+            //this.drawBackground();
+            Seeking.instance.si.renderShader(width,height);
             int i = this.getScrollBarX();
             int j = i + 6;
             this.bindAmountScrolled();
@@ -178,7 +180,7 @@ public abstract class GuiSlot
             GlStateManager.disableFog();
             Tessellator tessellator = Tessellator.getInstance();
             WorldRenderer worldrenderer = tessellator.getWorldRenderer();
-            this.drawContainerBackground(tessellator);
+            //this.drawContainerBackground(tessellator);
             int k = this.left + this.width / 2 - this.getListWidth() / 2 + 2;
             int l = this.top + 4 - (int)this.amountScrolled;
 

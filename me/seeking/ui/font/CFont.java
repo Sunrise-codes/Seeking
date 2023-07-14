@@ -18,7 +18,7 @@ import org.lwjgl.opengl.GL11;
 
 public class CFont {
 	private final float imgSize = 512.0f;
-	protected CharData[] charData = new CharData[512];
+	protected CharData[] charData = new CharData[256];
 	protected Font font;
 	protected boolean antiAlias;
 	protected boolean fractionalMetrics;
