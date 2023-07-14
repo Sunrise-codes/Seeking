@@ -14,6 +14,7 @@ import java.util.concurrent.atomic.AtomicInteger;
 
 import me.seeking.Seeking;
 import me.seeking.ui.GuiResetSession;
+import me.seeking.ui.font.FontLoaders;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
 import net.minecraft.client.renderer.OpenGlHelper;
@@ -376,7 +377,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         GlStateManager.scale(f, f, f);
         this.drawCenteredString(this.fontRendererObj, this.splashText, 0, -8, -256);
         GlStateManager.popMatrix();
-        String s = "Minecraft 1.8.9";
+        String s = "Seeking - Minecraft 1.8.9";
 
         if (this.mc.isDemo())
         {
@@ -405,12 +406,11 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         }
         else
         {
-            this.drawString(this.fontRendererObj, s, 2, this.height - 10, -1);
+            FontLoaders.font18.drawStringWithShadow(s, 2, this.height - 10, -1);
         }
 
         String s2 = "Copyright Mojang AB. Do not distribute!";
-        this.drawString(this.fontRendererObj, s2, this.width - this.fontRendererObj.getStringWidth(s2) - 2, this.height - 10, -1);
-
+        FontLoaders.font18.drawStringWithShadow(s2, this.width - this.fontRendererObj.getStringWidth(s2) - 2, this.height - 10, -1);
         if (this.openGLWarning1 != null && this.openGLWarning1.length() > 0)
         {
             drawRect(this.field_92022_t - 2, this.field_92021_u - 2, this.field_92020_v + 2, this.field_92019_w - 1, 1428160512);

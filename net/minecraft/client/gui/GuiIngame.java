@@ -144,7 +144,6 @@ public class GuiIngame extends Gui
         else
         {
             this.renderTooltip(scaledresolution, partialTicks);
-            Minecraft.getMinecraft().fontRendererObj.drawString("Seeking",0,0,new Color(28, 213, 65).getRGB());
         }
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);

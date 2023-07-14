@@ -9,7 +9,7 @@ import net.minecraft.util.ResourceLocation;
 public abstract class FontLoaders {
 	public static CFontRenderer font16;
 	public static CFontRenderer font18;
-	public static CFontRenderer fontBig22;
+	public static CFontRenderer fontBig18;
 	public static Font getFont(int size) {
 		Font font;
 		try {

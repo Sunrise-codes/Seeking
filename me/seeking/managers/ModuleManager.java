@@ -1,6 +1,5 @@
 package me.seeking.managers;
 
-import com.viaversion.viaversion.api.data.FullMappingsBase;
 import me.seeking.module.Module;
 import me.seeking.module.player.AutoGG;
 import me.seeking.module.render.*;
@@ -23,7 +22,7 @@ public class ModuleManager {
         modules.add(new FPSDisplay());
         modules.add(new CPSDisplay());
         modules.add(new KeyDisplay());
-        modules.add(new ClockDisplay());
+        modules.add(new InfoDisplay());
         modules.add(new AutoGG());
         modules.add(new Fullbright());
         modules.add(new PingDisplay());

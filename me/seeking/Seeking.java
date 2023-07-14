@@ -56,7 +56,7 @@ public class Seeking {
         }).start();
         FontLoaders.font16 = new CFontRenderer(FontLoaders.getFont(16), true, false);
         FontLoaders.font18 = new CFontRenderer(FontLoaders.getFont(18), true, false);
-        FontLoaders.fontBig22 = new CFontRenderer(FontLoaders.getBigFont(22), true, true);
+        FontLoaders.fontBig18 = new CFontRenderer(FontLoaders.getBigFont(18), true, true);
         moduleManager = new ModuleManager();
         moduleManager.addModules();
         eventManager = new EventManager();
