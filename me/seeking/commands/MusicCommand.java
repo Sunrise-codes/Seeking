@@ -12,7 +12,6 @@ import java.net.*;
 import me.miliblue.netease.MusicAPI;
 import me.seeking.managers.Command;
 import me.seeking.utils.PlayerUtil;
-import static me.drqzszn.ChineseURLEncoder.containsChinese;
 import static me.drqzszn.ChineseURLEncoder.encodeChineseToURL;
 
 /**

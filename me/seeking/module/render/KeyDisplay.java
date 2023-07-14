@@ -26,7 +26,7 @@ public class KeyDisplay extends Module {
     @EventTarget
     public void render2D(EventRender2D e){
         //Forward
-        RenderUtil.drawShadow((float) (getX() + 20), (float) getY(), 20, 20);
+        RenderUtil.drawShadow((float) (getX() + 22), (float) getY(), 20, 20);
         Gui.drawRect(getX() + 42, getY(), getX()+20, getY()+20, mc.gameSettings.keyBindForward.isKeyDown()? new Color(255, 255, 255, 135).getRGB() : new Color(0, 0, 0, 135).getRGB());
         FontLoaders.font16.drawStringWithShadow(Keyboard.getKeyName(mc.gameSettings.keyBindForward.getKeyCode()).toUpperCase(), (float) (getX() + 26), (float) (getY()+7), -1);
         //Right
