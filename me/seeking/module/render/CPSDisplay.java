@@ -1,13 +1,12 @@
 package me.seeking.module.render;
 
 import me.seeking.event.EventTarget;
-import me.seeking.event.events.EventAttack;
 import me.seeking.event.events.EventClickMouse;
 import me.seeking.event.events.EventRender2D;
 import me.seeking.event.events.EventUpdate;
 import me.seeking.module.Module;
 import me.seeking.ui.font.FontLoaders;
-import me.seeking.utils.RenderUtil;
+import me.seeking.utils.RenderUtils;
 import net.minecraft.client.gui.Gui;
 
 import java.awt.*;
@@ -31,7 +30,7 @@ public class CPSDisplay extends Module {
 
     @EventTarget
     public void render2D(EventRender2D e){
-        RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
+        RenderUtils.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
         Gui.drawRect(getX(), getY(), getX()+getWidth(), getY()+getHeight(), new Color(0, 0, 0, 135).getRGB());
         //mc.fontRendererObj.drawStringWithShadow(getCPS()+" CPS", (float) (getX()+13), (float) (getY()+6), -1);
         FontLoaders.font16.drawStringWithShadow(getCPS()+" CPS 中文", (float) (getX()+16), (float) (getY()+6), -1);
