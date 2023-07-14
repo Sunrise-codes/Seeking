@@ -3,13 +3,14 @@ package net.minecraft.client.gui;
 import com.google.common.base.Predicate;
 import com.google.common.collect.Iterables;
 import com.google.common.collect.Lists;
+
+import java.awt.*;
 import java.util.Collection;
 import java.util.List;
 import java.util.Random;
 
 import me.seeking.event.events.EventRender2D;
 import me.seeking.utils.BlurUtil;
-import me.seeking.utils.RenderUtil;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.renderer.GlStateManager;
@@ -48,6 +49,9 @@ import net.minecraft.util.ResourceLocation;
 import net.minecraft.util.StringUtils;
 import net.minecraft.world.border.WorldBorder;
 import net.optifine.CustomColors;
+import org.lwjgl.opengl.EXTPackedDepthStencil;
+
+import static org.lwjgl.opengl.EXTFramebufferObject.*;
 
 public class GuiIngame extends Gui
 {
@@ -140,6 +144,7 @@ public class GuiIngame extends Gui
         else
         {
             this.renderTooltip(scaledresolution, partialTicks);
+            Minecraft.getMinecraft().fontRendererObj.drawString("Seeking",0,0,new Color(28, 213, 65).getRGB());
         }
 
         GlStateManager.color(1.0F, 1.0F, 1.0F, 1.0F);
@@ -386,6 +391,22 @@ public class GuiIngame extends Gui
         }
 
         this.mc.mcProfiler.endSection();
+    }
+    public static void checkSetupFBO(Framebuffer framebuffer) {
+        if (framebuffer != null) {
+            if (framebuffer.depthBuffer > -1) {
+                setupFBO(framebuffer);
+                framebuffer.depthBuffer = -1;
+            }
+        }
+    }
+    public static void setupFBO(Framebuffer framebuffer) {
+        glDeleteRenderbuffersEXT(framebuffer.depthBuffer);
+        final int stencilDepthBufferID = glGenRenderbuffersEXT();
+        glBindRenderbufferEXT(GL_RENDERBUFFER_EXT, stencilDepthBufferID);
+        glRenderbufferStorageEXT(GL_RENDERBUFFER_EXT, EXTPackedDepthStencil.GL_DEPTH_STENCIL_EXT, Minecraft.getMinecraft().displayWidth, Minecraft.getMinecraft().displayHeight);
+        glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_STENCIL_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, stencilDepthBufferID);
+        glFramebufferRenderbufferEXT(GL_FRAMEBUFFER_EXT, GL_DEPTH_ATTACHMENT_EXT, GL_RENDERBUFFER_EXT, stencilDepthBufferID);
     }
 
     public void renderExpBar(ScaledResolution scaledRes, int x)
