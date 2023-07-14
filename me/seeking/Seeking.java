@@ -134,7 +134,8 @@ public class Seeking {
                         String[] iq = s.split("\\|");
                         for (String st : iq) {
                             if (st != null)
-                                moduleManager.getModuleByName(st).setEnable(true);
+                                if(moduleManager.getModuleByName(st) != null)
+                                    moduleManager.getModuleByName(st).setEnable(true);
                         }
                     }
                 }
