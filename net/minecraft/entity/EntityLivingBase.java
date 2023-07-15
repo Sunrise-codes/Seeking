@@ -9,6 +9,10 @@ import java.util.List;
 import java.util.Map;
 import java.util.Random;
 import java.util.UUID;
+
+import de.florianmichael.vialoadingbase.ViaLoadingBase;
+import de.florianmichael.viamcp.ViaMCP;
+import de.florianmichael.viamcp.protocolinfo.ProtocolInfo;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -1415,13 +1419,14 @@ public abstract class EntityLivingBase extends Entity
 
                     if (this.worldObj.isRemote && (!this.worldObj.isBlockLoaded(new BlockPos((int)this.posX, 0, (int)this.posZ)) || !this.worldObj.getChunkFromBlockCoords(new BlockPos((int)this.posX, 0, (int)this.posZ)).isLoaded()))
                     {
-                        if (this.posY > 0.0D)
-                        {
+                        if(ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_7.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_8.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_9.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_10.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_11.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_11_1.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_12.getProtocolVersion().getVersion()|| ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_12_1.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_12_2.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_13.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_13_1.getProtocolVersion().getVersion() || ViaLoadingBase.getInstance().getTargetVersion().getIndex() == ProtocolInfo.R1_13_2.getProtocolVersion().getVersion()) {
+                            if (this.posY > 0.0D) {
+                                this.motionY = -0.1D;
+                            } else {
+                                this.motionY = 0.0D;
+                            }
+                        }else{
                             this.motionY = -0.1D;
-                        }
-                        else
-                        {
-                            this.motionY = 0.0D;
                         }
                     }
                     else
