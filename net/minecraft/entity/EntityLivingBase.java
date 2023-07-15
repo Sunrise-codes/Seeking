@@ -1419,7 +1419,7 @@ public abstract class EntityLivingBase extends Entity
 
                     if (this.worldObj.isRemote && (!this.worldObj.isBlockLoaded(new BlockPos((int)this.posX, 0, (int)this.posZ)) || !this.worldObj.getChunkFromBlockCoords(new BlockPos((int)this.posX, 0, (int)this.posZ)).isLoaded()))
                     {
-                        this.motionY = -0.1D;
+                        this.motionY = -0.08D;
                     }
                     else
                     {
