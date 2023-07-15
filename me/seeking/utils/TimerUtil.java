@@ -6,7 +6,7 @@ package me.seeking.utils;
 public class TimerUtil {
     private long lastMS;
 
-    private long getCurrentMS() {
+    public static long getCurrentMS() {
         return System.nanoTime() / 1000000L;
     }
 

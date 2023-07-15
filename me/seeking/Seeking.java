@@ -54,9 +54,10 @@ public class Seeking {
                 e.printStackTrace();
             }
         }).start();
-        FontLoaders.font16 = new CFontRenderer(FontLoaders.getFont(16), true, false);
-        FontLoaders.font18 = new CFontRenderer(FontLoaders.getFont(18), true, false);
+        FontLoaders.font16 = new CFontRenderer(FontLoaders.getFont(16), true, true);
+        FontLoaders.font18 = new CFontRenderer(FontLoaders.getFont(18), true, true);
         FontLoaders.fontBig18 = new CFontRenderer(FontLoaders.getBigFont(18), true, true);
+        FontLoaders.iconFont18 = new CFontRenderer(FontLoaders.getIconFont(18), true, true);
         moduleManager = new ModuleManager();
         moduleManager.addModules();
         eventManager = new EventManager();

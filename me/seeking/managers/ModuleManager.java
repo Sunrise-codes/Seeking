@@ -26,6 +26,7 @@ public class ModuleManager {
         modules.add(new AutoGG());
         modules.add(new Fullbright());
         modules.add(new PingDisplay());
+        modules.add(new SessionInfo());
     }
 
     /**

@@ -9,7 +9,13 @@ import io.netty.util.concurrent.Future;
 import io.netty.util.concurrent.GenericFutureListener;
 import java.math.BigInteger;
 import java.security.PublicKey;
+import java.time.LocalTime;
+import java.time.format.DateTimeFormatter;
+import java.util.Date;
 import javax.crypto.SecretKey;
+
+import me.seeking.event.events.EventJoinServer;
+import me.seeking.module.render.SessionInfo;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.GuiDisconnected;
 import net.minecraft.client.gui.GuiScreen;
@@ -102,6 +108,9 @@ public class NetHandlerLoginClient implements INetHandlerLoginClient
         this.gameProfile = packetIn.getProfile();
         this.networkManager.setConnectionState(EnumConnectionState.PLAY);
         this.networkManager.setNetHandler(new NetHandlerPlayClient(this.mc, this.previousGuiScreen, this.networkManager, this.gameProfile));
+        new EventJoinServer(System.currentTimeMillis()).call();
+        System.out.printf("[DEBUG] GETTIME \n");
+        SessionInfo.jointime = new Date();
     }
 
     public void onDisconnect(IChatComponent reason)
