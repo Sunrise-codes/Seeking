@@ -118,7 +118,6 @@ public class GuiButton extends Gui {
                     glStencilFunc(GL_ALWAYS, 1, 1);
                     glStencilOp(GL_REPLACE, GL_REPLACE, GL_REPLACE);
                     glColorMask(false, false, false, false);
-                    RenderUtil.drawRoundRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 4, new Color((int) red, (int) green, (int) blue, (int) alpha));
 
                     glColorMask(true, true, true, true);
                     glStencilFunc(GL_EQUAL, 1, 1);
@@ -127,8 +126,9 @@ public class GuiButton extends Gui {
                 }
 
 
-            RenderUtil.drawRoundRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, 4, new Color((int) red, (int) green, (int) blue, (int) alpha));
-
+            RenderUtil.drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, new Color((int) red, (int) green, (int) blue, (int) alpha).getRGB());
+            RenderUtil.drawShadow(xPosition, yPosition, width, height);
+            RenderUtil.drawShadow(xPosition, yPosition, width, height);
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 

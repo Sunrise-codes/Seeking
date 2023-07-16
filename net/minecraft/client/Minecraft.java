@@ -418,47 +418,47 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.mcResourcePackRepository = new ResourcePackRepository(this.fileResourcepacks, new File(this.mcDataDir, "server-resource-packs"), this.mcDefaultResourcePack, this.metadataSerializer_, this.gameSettings);
         this.mcLanguageManager = new LanguageManager(this.metadataSerializer_, this.gameSettings.language);
         new Thread(() -> {
-        this.mcResourceManager.registerReloadListener(this.mcLanguageManager);
-        this.refreshResources();
+            this.mcResourceManager.registerReloadListener(this.mcLanguageManager);
+            this.refreshResources();
         }).start();
         this.renderEngine = new TextureManager(this.mcResourceManager);
         this.mcResourceManager.registerReloadListener(this.renderEngine);
         this.drawSplashScreen(this.renderEngine);
         new Thread(() -> {
-        this.initStream();
-        this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
-        this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
-        this.mcSoundHandler = new SoundHandler(this.mcResourceManager, this.gameSettings);
-        this.mcResourceManager.registerReloadListener(this.mcSoundHandler);
-        this.mcMusicTicker = new MusicTicker(this);
+            this.initStream();
+            this.skinManager = new SkinManager(this.renderEngine, new File(this.fileAssets, "skins"), this.sessionService);
+            this.saveLoader = new AnvilSaveConverter(new File(this.mcDataDir, "saves"));
+            this.mcSoundHandler = new SoundHandler(this.mcResourceManager, this.gameSettings);
+            this.mcResourceManager.registerReloadListener(this.mcSoundHandler);
+            this.mcMusicTicker = new MusicTicker(this);
         }).start();
         this.fontRendererObj = new FontRenderer(this.gameSettings, new ResourceLocation("textures/font/ascii.png"), this.renderEngine, false);
         this.standardGalacticFontRenderer = new FontRenderer(this.gameSettings, new ResourceLocation("textures/font/ascii_sga.png"), this.renderEngine, false);
         new Thread(() -> {
             if (this.gameSettings.language != null)
-        {
-            this.fontRendererObj.setUnicodeFlag(this.isUnicode());
-            this.fontRendererObj.setBidiFlag(this.mcLanguageManager.isCurrentLanguageBidirectional());
-        }
-
-        this.mcResourceManager.registerReloadListener(this.fontRendererObj);
-        this.mcResourceManager.registerReloadListener(this.standardGalacticFontRenderer);
-        this.mcResourceManager.registerReloadListener(new GrassColorReloadListener());
-        this.mcResourceManager.registerReloadListener(new FoliageColorReloadListener());
-        AchievementList.openInventory.setStatStringFormatter(new IStatStringFormat()
-        {
-            public String formatString(String str)
             {
-                try
-                {
-                    return String.format(str, new Object[] {GameSettings.getKeyDisplayString(Minecraft.this.gameSettings.keyBindInventory.getKeyCode())});
-                }
-                catch (Exception exception)
-                {
-                    return "Error: " + exception.getLocalizedMessage();
-                }
+                this.fontRendererObj.setUnicodeFlag(this.isUnicode());
+                this.fontRendererObj.setBidiFlag(this.mcLanguageManager.isCurrentLanguageBidirectional());
             }
-        });
+
+            this.mcResourceManager.registerReloadListener(this.fontRendererObj);
+            this.mcResourceManager.registerReloadListener(this.standardGalacticFontRenderer);
+            this.mcResourceManager.registerReloadListener(new GrassColorReloadListener());
+            this.mcResourceManager.registerReloadListener(new FoliageColorReloadListener());
+            AchievementList.openInventory.setStatStringFormatter(new IStatStringFormat()
+            {
+                public String formatString(String str)
+                {
+                    try
+                    {
+                        return String.format(str, new Object[] {GameSettings.getKeyDisplayString(Minecraft.this.gameSettings.keyBindInventory.getKeyCode())});
+                    }
+                    catch (Exception exception)
+                    {
+                        return "Error: " + exception.getLocalizedMessage();
+                    }
+                }
+            });
         }).start();
         this.mouseHelper = new MouseHelper();
         this.checkGLError("Pre startup");
@@ -487,10 +487,10 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         this.mcResourceManager.registerReloadListener(this.renderItem);
         this.entityRenderer = new EntityRenderer(this, this.mcResourceManager);
         new Thread(() -> {
-        this.mcResourceManager.registerReloadListener(this.entityRenderer);
-        this.blockRenderDispatcher = new BlockRendererDispatcher(this.modelManager.getBlockModelShapes(), this.gameSettings);
-        this.mcResourceManager.registerReloadListener(this.blockRenderDispatcher);
-        this.guiAchievement = new GuiAchievement(this);
+            this.mcResourceManager.registerReloadListener(this.entityRenderer);
+            this.blockRenderDispatcher = new BlockRendererDispatcher(this.modelManager.getBlockModelShapes(), this.gameSettings);
+            this.mcResourceManager.registerReloadListener(this.blockRenderDispatcher);
+            this.guiAchievement = new GuiAchievement(this);
         }).start();
         this.renderGlobal = new RenderGlobal(this);
         this.mcResourceManager.registerReloadListener(this.renderGlobal);

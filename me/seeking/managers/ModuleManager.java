@@ -17,16 +17,19 @@ public class ModuleManager {
      * 这个方法用来初始化Module List的
      */
     public void addModules(){
-        modules.add(new Sprint());
-        modules.add(new ClickGui());
-        modules.add(new FPSDisplay());
-        modules.add(new CPSDisplay());
-        modules.add(new KeyDisplay());
-        modules.add(new InfoDisplay());
-        modules.add(new AutoGG());
-        modules.add(new Fullbright());
-        modules.add(new PingDisplay());
-        modules.add(new SessionInfo());
+        new Thread(() -> {
+            modules.add(new Sprint());
+            modules.add(new ClickGui());
+            modules.add(new FPSDisplay());
+            modules.add(new CPSDisplay());
+            modules.add(new KeyDisplay());
+            modules.add(new InfoDisplay());
+            modules.add(new AutoGG());
+            modules.add(new Fullbright());
+            modules.add(new PingDisplay());
+            modules.add(new SessionInfo());
+            modules.add(new Drag());
+        }).start();
     }
 
     /**

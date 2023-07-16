@@ -28,6 +28,10 @@ public class Module {
         this.moduleType = moduleType;
     }
 
+    public ArrayList<Value> getValues() {
+        return valuesList;
+    }
+
     /**
      * 返回Module的名字
      * @return name

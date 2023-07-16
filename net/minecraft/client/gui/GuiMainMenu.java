@@ -408,9 +408,6 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
         {
             FontLoaders.font18.drawStringWithShadow(s, 2, this.height - 10, -1);
         }
-
-        String s2 = "Copyright Mojang AB. Do not distribute!";
-        FontLoaders.font18.drawStringWithShadow(s2, this.width - this.fontRendererObj.getStringWidth(s2) - 2, this.height - 10, -1);
         if (this.openGLWarning1 != null && this.openGLWarning1.length() > 0)
         {
             drawRect(this.field_92022_t - 2, this.field_92021_u - 2, this.field_92020_v + 2, this.field_92019_w - 1, 1428160512);

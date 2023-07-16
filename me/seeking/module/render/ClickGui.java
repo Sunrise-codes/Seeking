@@ -1,6 +1,7 @@
 package me.seeking.module.render;
 
 import me.seeking.module.Module;
+import me.seeking.ui.clickgui.ClickUi;
 import org.lwjgl.input.Keyboard;
 
 /**
@@ -15,6 +16,6 @@ public class ClickGui extends Module {
 
     @Override
     public void onEnable(){
-        mc.displayGuiScreen(new me.seeking.ui.drag.GuiDrag());
+        mc.displayGuiScreen(new ClickUi());
     }
 }

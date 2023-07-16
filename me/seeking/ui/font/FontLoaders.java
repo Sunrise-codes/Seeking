@@ -7,6 +7,7 @@ import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
 public abstract class FontLoaders {
+	public static CFontRenderer font14;
 	public static CFontRenderer font16;
 	public static CFontRenderer font18;
 	public static CFontRenderer fontBig18;
@@ -14,8 +15,7 @@ public abstract class FontLoaders {
 	public static Font getFont(int size) {
 		Font font;
 		try {
-			InputStream is = Minecraft.getMinecraft().getResourceManager()
-					.getResource(new ResourceLocation("seeking/font/normal.ttf")).getInputStream();
+			InputStream is = FontLoaders.class.getResourceAsStream("/assets/minecraft/seeking/font/normal.ttf");
 			font = Font.createFont(0, is);
 			font = font.deriveFont(0, size);
 		} catch (Exception ex) {

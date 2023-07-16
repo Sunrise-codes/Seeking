@@ -1417,14 +1417,14 @@ public abstract class EntityLivingBase extends Entity
                         this.motionY = 0.2D;
                     }
 
-                    if (this.worldObj.isRemote && (!this.worldObj.isBlockLoaded(new BlockPos((int)this.posX, 0, (int)this.posZ)) || !this.worldObj.getChunkFromBlockCoords(new BlockPos((int)this.posX, 0, (int)this.posZ)).isLoaded()))
-                    {
-                        this.motionY = -0.08D;
-                    }
-                    else
-                    {
+//                    if (this.worldObj.isRemote && (!this.worldObj.isBlockLoaded(new BlockPos((int)this.posX, 0, (int)this.posZ)) || !this.worldObj.getChunkFromBlockCoords(new BlockPos((int)this.posX, 0, (int)this.posZ)).isLoaded()))
+//                    {
+//                        this.motionY = -0.08D;
+//                    }
+//                    else
+//                    {
                         this.motionY -= 0.08D;
-                    }
+//                    }
 
                     this.motionY *= 0.9800000190734863D;
                     this.motionX *= (double)f4;
