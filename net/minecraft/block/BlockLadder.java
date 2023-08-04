@@ -1,5 +1,7 @@
 package net.minecraft.block;
 
+import me.seeking.Seeking;
+import me.seeking.module.player.PacketFix;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.properties.IProperty;
 import net.minecraft.block.properties.PropertyDirection;
@@ -44,6 +46,10 @@ public class BlockLadder extends Block
         if (iblockstate.getBlock() == this)
         {
             float f = 0.125F;
+            PacketFix pf = (PacketFix) Seeking.instance.moduleManager.getModuleByName("PacketFix");
+            if(pf.isEnable() && pf.fixLadder.getValue()){
+                f = 0.1875F;
+            }
 
             switch ((EnumFacing)iblockstate.getValue(FACING))
             {

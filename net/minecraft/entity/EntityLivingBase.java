@@ -13,6 +13,8 @@ import java.util.UUID;
 import de.florianmichael.vialoadingbase.ViaLoadingBase;
 import de.florianmichael.viamcp.ViaMCP;
 import de.florianmichael.viamcp.protocolinfo.ProtocolInfo;
+import me.seeking.Seeking;
+import me.seeking.module.player.PacketFix;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
@@ -1703,18 +1705,20 @@ public abstract class EntityLivingBase extends Entity
             this.motionY *= 0.98D;
             this.motionZ *= 0.98D;
         }
+        PacketFix pf = (PacketFix) Seeking.instance.moduleManager.getModuleByName("PacketFix");
+        double offset = pf.isEnable() && pf.fixMove.getValue() ? 0.003D : 0.005D;
 
-        if (Math.abs(this.motionX) < 0.005D)
+        if (Math.abs(this.motionX) < offset)
         {
             this.motionX = 0.0D;
         }
 
-        if (Math.abs(this.motionY) < 0.005D)
+        if (Math.abs(this.motionY) < offset)
         {
             this.motionY = 0.0D;
         }
 
-        if (Math.abs(this.motionZ) < 0.005D)
+        if (Math.abs(this.motionZ) < offset)
         {
             this.motionZ = 0.0D;
         }

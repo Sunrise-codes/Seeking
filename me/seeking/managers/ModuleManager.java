@@ -1,7 +1,9 @@
 package me.seeking.managers;
 
 import me.seeking.module.Module;
+import me.seeking.module.fun.Derp;
 import me.seeking.module.player.AutoGG;
+import me.seeking.module.player.PacketFix;
 import me.seeking.module.render.*;
 import me.seeking.module.player.Sprint;
 
@@ -28,7 +30,8 @@ public class ModuleManager {
             modules.add(new Fullbright());
             modules.add(new PingDisplay());
             modules.add(new SessionInfo());
-            modules.add(new Drag());
+            modules.add(new PacketFix());
+            modules.add(new Derp());
         }).start();
     }
 

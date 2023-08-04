@@ -109,7 +109,6 @@ public class NetHandlerLoginClient implements INetHandlerLoginClient
         this.networkManager.setConnectionState(EnumConnectionState.PLAY);
         this.networkManager.setNetHandler(new NetHandlerPlayClient(this.mc, this.previousGuiScreen, this.networkManager, this.gameProfile));
         new EventJoinServer(System.currentTimeMillis()).call();
-        System.out.printf("[DEBUG] GETTIME \n");
         SessionInfo.jointime = new Date();
     }
 

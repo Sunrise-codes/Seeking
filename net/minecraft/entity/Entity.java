@@ -4,6 +4,10 @@ import java.util.List;
 import java.util.Random;
 import java.util.UUID;
 import java.util.concurrent.Callable;
+
+import me.seeking.Seeking;
+import me.seeking.event.events.EventStrafe;
+import me.seeking.module.player.PacketFix;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockFence;
 import net.minecraft.block.BlockFenceGate;
@@ -12,6 +16,7 @@ import net.minecraft.block.BlockWall;
 import net.minecraft.block.material.Material;
 import net.minecraft.block.state.IBlockState;
 import net.minecraft.block.state.pattern.BlockPattern;
+import net.minecraft.client.Minecraft;
 import net.minecraft.command.CommandResultStats;
 import net.minecraft.command.ICommandSender;
 import net.minecraft.crash.CrashReport;
@@ -1009,6 +1014,15 @@ public abstract class Entity implements ICommandSender
 
     public void moveFlying(float strafe, float forward, float friction)
     {
+        if(this == Minecraft.getMinecraft().thePlayer){
+            PacketFix pf = (PacketFix) Seeking.instance.moduleManager.getModuleByName("PacketFix");
+            if(pf.isEnable()&&pf.fixStrafe.getValue()){
+                EventStrafe es = new EventStrafe(strafe, forward, friction);
+                es.call();
+                if(es.isCancelled())
+                    return;
+            }
+        }
         float f = strafe * strafe + forward * forward;
 
         if (f >= 1.0E-4F)
@@ -1704,6 +1718,10 @@ public abstract class Entity implements ICommandSender
 
     public float getCollisionBorderSize()
     {
+        PacketFix pf = (PacketFix) Seeking.instance.moduleManager.getModuleByName("PacketFix");
+        if(pf.isEnable() && pf.fixHitbox.getValue()){
+            return 0;
+        }
         return 0.1F;
     }
 
