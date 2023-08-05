@@ -3,6 +3,9 @@ package net.minecraft.client.gui;
 import com.google.common.collect.Lists;
 import java.io.IOException;
 import java.util.List;
+
+import me.seeking.Seeking;
+import me.seeking.module.Module;
 import net.minecraft.network.play.client.C14PacketTabComplete;
 import net.minecraft.util.BlockPos;
 import net.minecraft.util.ChatComponentText;
@@ -151,6 +154,9 @@ public class GuiChat extends GuiScreen
         }
 
         this.inputField.mouseClicked(mouseX, mouseY, mouseButton);
+        for (Module m : Seeking.instance.moduleManager.modules){
+            m.mouseClick(mouseX, mouseY, mouseButton);
+        }
         super.mouseClicked(mouseX, mouseY, mouseButton);
     }
 
@@ -267,7 +273,9 @@ public class GuiChat extends GuiScreen
         {
             this.handleComponentHover(ichatcomponent, mouseX, mouseY);
         }
-
+        for (Module m : Seeking.instance.moduleManager.modules){
+            m.doGrag(mouseX, mouseY);
+        }
         super.drawScreen(mouseX, mouseY, partialTicks);
     }
 

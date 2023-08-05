@@ -1,6 +1,7 @@
 package me.seeking.module;
 
 import me.seeking.Seeking;
+import me.seeking.utils.AnimationUtil;
 import me.seeking.value.Value;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.gui.ScaledResolution;
@@ -131,12 +132,15 @@ public class Module {
     public void setHeight(double height) {
         this.height = height;
     }
+    float offsetX, offsetY;
     public void mouseClick(int mouseX, int mouseY, int button) {
         if (mouseX > getX() - 2 && mouseX < getX() + getWidth() && mouseY >getY() - 2 && mouseY < getY() + height && isEnable()) {
             if (button == 0) {
+                offsetX = (float) (mouseX-x);
+                offsetY = (float) (mouseY-y);
                 this.dragging = true;
-                this.x = mouseX + x;
-                this.y = mouseY - y;
+                this.x = mouseX-offsetX;
+                this.y = mouseY-offsetY;
             }
         }
     }
@@ -146,8 +150,8 @@ public class Module {
             if (!Mouse.isButtonDown(0)) {
                 this.dragging = false;
             }
-            setX(mouseX);
-            setY(mouseY);
+            setX(mouseX-offsetX);
+            setY(mouseY-offsetY);
         }
     }
 
