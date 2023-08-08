@@ -69,7 +69,7 @@ public class Seeking {
         loadCFG();
         si = new ShaderInstance();
         //Set Title
-        Display.setTitle("Seeking 0.1 - (Minecraft 1.8.9)");
+        Display.setTitle("Seeking 0.2 - (Minecraft 1.8.9)");
     }
 
     /**
