@@ -10,6 +10,9 @@ import java.util.Date;
 import java.util.List;
 import java.util.Random;
 import java.util.concurrent.Callable;
+
+import me.seeking.event.events.EventRenderWorld;
+import me.seeking.module.render.ChinaHat;
 import net.minecraft.block.Block;
 import net.minecraft.block.BlockBed;
 import net.minecraft.block.material.Material;
@@ -1813,6 +1816,7 @@ public class EntityRenderer implements IResourceManagerReloadListener
         }
 
         this.mc.mcProfiler.endStartSection("hand");
+        new EventRenderWorld(partialTicks).call();
 
         if (this.renderHand && !Shaders.isShadowPass)
         {

@@ -136,7 +136,7 @@ public class Seeking {
                         String[] iq = s.split("\\|");
                         for (String st : iq) {
                             if (st != null)
-                                if(moduleManager.getModuleByName(st) != null)
+                                if(moduleManager.getModuleByName(st) != null && !st.equalsIgnoreCase("ClickGui"))
                                     moduleManager.getModuleByName(st).setEnable(true);
                         }
                     }

@@ -7,6 +7,7 @@ import me.seeking.module.Module;
 import me.seeking.utils.PlayerUtil;
 import me.seeking.value.Option;
 import net.minecraft.client.network.OldServerPinger;
+import net.minecraft.network.play.client.C03PacketPlayer;
 import net.minecraft.network.play.client.C0APacketAnimation;
 import net.minecraft.util.MathHelper;
 
@@ -31,6 +32,16 @@ public class PacketFix extends Module
         //Cancel C0A
         if(e.getPacket() instanceof C0APacketAnimation && cancelC0A.getValue()){
             e.setCancelled(true);
+        }
+    }
+
+    @EventTarget
+    public void shit(EventPacket e){
+        if(e.getPacket() instanceof C03PacketPlayer){
+            C03PacketPlayer shit = (C03PacketPlayer) e.getPacket();
+            if(!shit.isMoving() && !shit.getRotating()){
+                e.setCancelled(true);
+            }
         }
     }
 

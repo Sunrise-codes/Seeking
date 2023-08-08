@@ -6,6 +6,7 @@ import me.seeking.module.player.AutoGG;
 import me.seeking.module.player.PacketFix;
 import me.seeking.module.render.*;
 import me.seeking.module.player.Sprint;
+import paulscode.sound.libraries.ChannelJavaSound;
 
 import java.util.ArrayList;
 
@@ -32,6 +33,8 @@ public class ModuleManager {
             modules.add(new SessionInfo());
             modules.add(new PacketFix());
             modules.add(new Derp());
+            modules.add(new MusicInfo());
+            modules.add(new ChinaHat());
         }).start();
     }
 

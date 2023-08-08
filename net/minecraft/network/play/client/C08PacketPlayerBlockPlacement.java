@@ -1,6 +1,8 @@
 package net.minecraft.network.play.client;
 
 import java.io.IOException;
+
+import me.seeking.Seeking;
 import net.minecraft.item.ItemStack;
 import net.minecraft.network.Packet;
 import net.minecraft.network.PacketBuffer;
@@ -38,22 +40,40 @@ public class C08PacketPlayerBlockPlacement implements Packet<INetHandlerPlayServ
 
     public void readPacketData(PacketBuffer buf) throws IOException
     {
-        this.position = buf.readBlockPos();
-        this.placedBlockDirection = buf.readUnsignedByte();
-        this.stack = buf.readItemStackFromBuffer();
-        this.facingX = (float)buf.readUnsignedByte() / 16.0F;
-        this.facingY = (float)buf.readUnsignedByte() / 16.0F;
-        this.facingZ = (float)buf.readUnsignedByte() / 16.0F;
+        if(!Seeking.instance.moduleManager.getModuleByName("PacketFix").isEnable()) {
+            this.position = buf.readBlockPos();
+            this.placedBlockDirection = buf.readUnsignedByte();
+            this.stack = buf.readItemStackFromBuffer();
+            this.facingX = (float) buf.readUnsignedByte() / 16.0F;
+            this.facingY = (float) buf.readUnsignedByte() / 16.0F;
+            this.facingZ = (float) buf.readUnsignedByte() / 16.0F;
+        }else {
+            this.position = buf.readBlockPos();
+            this.placedBlockDirection = buf.readUnsignedByte();
+            this.stack = buf.readItemStackFromBuffer();
+            this.facingX = (float) buf.readUnsignedByte() / 1;
+            this.facingY = (float) buf.readUnsignedByte() / 1;
+            this.facingZ = (float) buf.readUnsignedByte() / 1;
+        }
     }
 
     public void writePacketData(PacketBuffer buf) throws IOException
     {
-        buf.writeBlockPos(this.position);
-        buf.writeByte(this.placedBlockDirection);
-        buf.writeItemStackToBuffer(this.stack);
-        buf.writeByte((int)(this.facingX * 16.0F));
-        buf.writeByte((int)(this.facingY * 16.0F));
-        buf.writeByte((int)(this.facingZ * 16.0F));
+        if(!Seeking.instance.moduleManager.getModuleByName("PacketFix").isEnable()) {
+            buf.writeBlockPos(this.position);
+            buf.writeByte(this.placedBlockDirection);
+            buf.writeItemStackToBuffer(this.stack);
+            buf.writeByte((int) (this.facingX * 16.0F));
+            buf.writeByte((int) (this.facingY * 16.0F));
+            buf.writeByte((int) (this.facingZ * 16.0F));
+        }else {
+            buf.writeBlockPos(this.position);
+            buf.writeByte(this.placedBlockDirection);
+            buf.writeItemStackToBuffer(this.stack);
+            buf.writeByte((int) (this.facingX));
+            buf.writeByte((int) (this.facingY));
+            buf.writeByte((int) (this.facingZ));
+        }
     }
 
     public void processPacket(INetHandlerPlayServer handler)

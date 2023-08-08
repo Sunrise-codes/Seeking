@@ -30,7 +30,7 @@ public class SessionInfo extends Module {
     @EventTarget
     public void on2D(EventRender2D e){
         RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
-        Gui.drawRect(getX(), getY(), getX()+getWidth(), getY()+getHeight(),  new Color(0, 0, 0, 135).getRGB());
+        Gui.drawRect(getX(), getY(), getX()+getWidth(), getY()+getHeight(),   new Color(0, 0, 0, 155).getRGB());
         FontLoaders.iconFont18.drawStringWithShadow("C", getX() + 3, getY()+6, -1);
         FontLoaders.font18.drawStringWithShadow("Session Info", getX() + 3 + FontLoaders.fontBig18.getStringWidth("C  "), getY()+5, -1);
         FontLoaders.iconFont18.drawStringWithShadow("B", getX() + 3, getY() + 6 + FontLoaders.fontBig18.getHeight()+FontLoaders.font18.getHeight(), -1);
