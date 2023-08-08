@@ -16,7 +16,7 @@ public class Sprint extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate e){
-        if(!mc.thePlayer.isSprinting() && mc.gameSettings.keyBindForward.isKeyDown() && mc.thePlayer.getFoodStats().getFoodLevel() > 6 && !(mc.gameSettings.keyBindBack.isKeyDown() || mc.gameSettings.keyBindLeft.isKeyDown() || mc.gameSettings.keyBindRight.isKeyDown())){
+        if(mc.gameSettings.keyBindForward.isKeyDown() && mc.thePlayer.getFoodStats().getFoodLevel() > 6 && !(mc.gameSettings.keyBindBack.isKeyDown() || mc.gameSettings.keyBindLeft.isKeyDown() || mc.gameSettings.keyBindRight.isKeyDown())){
             mc.thePlayer.setSprinting(true);
         }
     }
