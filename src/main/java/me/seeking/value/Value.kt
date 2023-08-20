@@ -8,7 +8,7 @@ import java.util.function.Supplier
 
 open class Value<V>(name: String, value: V, visitable: Supplier<Boolean>) {
     private lateinit var name: String
-    var value: V
+    open var value: V
     private val visitable: Supplier<Boolean>
 
     init {

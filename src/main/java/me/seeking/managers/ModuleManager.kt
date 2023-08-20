@@ -2,10 +2,7 @@ package me.seeking.managers
 
 import me.seeking.module.Module
 import me.seeking.module.player.Sprint
-import me.seeking.module.render.CPSDisplay
-import me.seeking.module.render.FPSDisplay
-import me.seeking.module.render.InfoDisplay
-import me.seeking.module.render.KeyDisplay
+import me.seeking.module.render.*
 
 class ModuleManager {
     var modules: ArrayList<Module> = ArrayList<Module>()
@@ -25,7 +22,7 @@ class ModuleManager {
 //            modules.add(Fullbright())
 //            modules.add(PingDisplay())
 //            modules.add(SessionInfo())
-//            modules.add(ChinaHat())
+            modules.add(ChinaHat())
         }.start()
     }
 
