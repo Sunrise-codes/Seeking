@@ -1,0 +1,11 @@
+{
+  "required": true,
+  "package": "me.seeking.mixin.inject",
+  "refmap": "mixins.seeking.refmap.json",
+  "compatibilityLevel": "JAVA_8",
+  "mixins": [
+    "MixinMinecraft",
+    "MixinGuiIngame",
+    "MixinEntityPlayerSP"
+  ]
+}

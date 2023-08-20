@@ -1,0 +1,16 @@
+[
+{
+  "modid": "seeking",
+  "name": "Seeking Mod",
+  "description": "",
+  "version": "0.3",
+  "mcversion": "1.8.9",
+  "url": "",
+  "updateUrl": "",
+  "authorList": ["MiLiBlue"],
+  "credits": "我测你妈。",
+  "logoFile": "",
+  "screenshots": [],
+  "dependencies": []
+}
+]
