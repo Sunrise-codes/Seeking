@@ -24,11 +24,11 @@ class CPSDisplay : Module("CPSDisplay", ModuleType.Render) {
     @EventTarget
     fun render2D(e: EventRender2D?) {
         RenderUtil.drawShadow(getX().toFloat(), getY().toFloat(), getWidth().toFloat(), getHeight().toFloat())
-        Gui.drawRect(
-            getX().toInt(),
-            getY().toInt(),
-            (getX() + getWidth()).toInt(),
-            (getY() + getHeight()).toInt(),
+        RenderUtil.drawRect(
+            getX(),
+            getY(),
+            (getX() + getWidth()),
+            (getY() + getHeight()),
             Color(0, 0, 0, 135).rgb
         )
         FontLoaders.font16!!.drawStringWithShadow(

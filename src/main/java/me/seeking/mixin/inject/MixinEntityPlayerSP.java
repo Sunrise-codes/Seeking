@@ -36,7 +36,7 @@ public class MixinEntityPlayerSP {
             cancellable = true
     )
     public void sendMessageHook(String message,CallbackInfo ci){
-        if(Objects.requireNonNull(Seeking.Companion.getInstance().getCommandManager()).processCommand(message)){
+        if(Objects.requireNonNull(Seeking.instance.getCommandManager()).processCommand(message)){
             ci.cancel();
         }
     }

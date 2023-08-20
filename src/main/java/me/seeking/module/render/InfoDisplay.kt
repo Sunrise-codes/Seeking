@@ -25,11 +25,11 @@ class InfoDisplay:Module {
         )
         RenderUtil.drawShadow(getX().toFloat(), getY().toFloat(), getWidth().toFloat(), getHeight().toFloat())
         RenderUtil.drawShadow(getX().toFloat(), getY().toFloat(), getWidth().toFloat(), getHeight().toFloat())
-        Gui.drawRect(
-            getX().toInt(),
-            getY().toInt(),
-            (getX() + getWidth()).toInt(),
-            (getY() + getHeight()).toInt(),
+        RenderUtil.drawRect(
+            getX(),
+            getY(),
+            (getX() + getWidth()),
+            (getY() + getHeight()),
             Color(0, 0, 0).rgb
         )
         FontLoaders.fontBig18!!.drawString(

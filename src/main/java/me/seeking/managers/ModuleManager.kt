@@ -2,7 +2,10 @@ package me.seeking.managers
 
 import me.seeking.module.Module
 import me.seeking.module.player.Sprint
+import me.seeking.module.render.CPSDisplay
+import me.seeking.module.render.FPSDisplay
 import me.seeking.module.render.InfoDisplay
+import me.seeking.module.render.KeyDisplay
 
 class ModuleManager {
     var modules: ArrayList<Module> = ArrayList<Module>()
@@ -14,9 +17,9 @@ class ModuleManager {
         Thread {
             modules.add(Sprint())
 //            modules.add(ClickGui())
-//            modules.add(FPSDisplay())
-//            modules.add(CPSDisplay())
-//            modules.add(KeyDisplay())
+            modules.add(FPSDisplay())
+            modules.add(CPSDisplay())
+            modules.add(KeyDisplay())
             modules.add(InfoDisplay())
 //            modules.add(AutoGG())
 //            modules.add(Fullbright())

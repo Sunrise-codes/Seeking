@@ -17,7 +17,7 @@ public class MixinMinecraft {
             at = { @At(value = "FIELD", target = "Lnet/minecraft/client/Minecraft;ingameGUI:Lnet/minecraft/client/gui/GuiIngame;", shift = At.Shift.AFTER) }
     )
     public void startGameHook(CallbackInfo ci){
-        Seeking.Companion.getInstance().start();
+        Seeking.instance.start();
     }
 
     @Inject(
@@ -25,7 +25,7 @@ public class MixinMinecraft {
             at = @At("HEAD")
     )
     public void stopGameHook(CallbackInfo ci){
-        Seeking.Companion.getInstance().stop();
+        Seeking.instance.stop();
     }
 
     @Inject(

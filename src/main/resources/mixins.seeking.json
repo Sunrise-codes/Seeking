@@ -6,6 +6,7 @@
   "mixins": [
     "MixinMinecraft",
     "MixinGuiIngame",
-    "MixinEntityPlayerSP"
+    "MixinEntityPlayerSP",
+    "MixinGuiChat"
   ]
 }

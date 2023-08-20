@@ -50,5 +50,40 @@ class RenderUtil {
             worldrenderer.pos(x.toDouble(), y.toDouble(), 0.0).tex((u * f).toDouble(), (v * f1).toDouble()).endVertex()
             tessellator.draw()
         }
+
+        fun drawRect(left: Double, top: Double, right: Double, bottom: Double, color: Int) {
+            var left = left
+            var top = top
+            var right = right
+            var bottom = bottom
+            if (left < right) {
+                val i = left
+                left = right
+                right = i
+            }
+            if (top < bottom) {
+                val j = top
+                top = bottom
+                bottom = j
+            }
+            val f3 = (color shr 24 and 255).toFloat() / 255.0f
+            val f = (color shr 16 and 255).toFloat() / 255.0f
+            val f1 = (color shr 8 and 255).toFloat() / 255.0f
+            val f2 = (color and 255).toFloat() / 255.0f
+            val tessellator = Tessellator.getInstance()
+            val worldrenderer = tessellator.worldRenderer
+            GlStateManager.enableBlend()
+            GlStateManager.disableTexture2D()
+            GlStateManager.tryBlendFuncSeparate(770, 771, 1, 0)
+            GlStateManager.color(f, f1, f2, f3)
+            worldrenderer.begin(7, DefaultVertexFormats.POSITION)
+            worldrenderer.pos(left, bottom, 0.0).endVertex()
+            worldrenderer.pos(right, bottom, 0.0).endVertex()
+            worldrenderer.pos(right, top, 0.0).endVertex()
+            worldrenderer.pos(left, top, 0.0).endVertex()
+            tessellator.draw()
+            GlStateManager.enableTexture2D()
+            GlStateManager.disableBlend()
+        }
     }
 }

@@ -151,6 +151,7 @@ class Seeking {
     }
 
     companion object {
+        @JvmField
         val instance: Seeking = Seeking()
     }
 }
