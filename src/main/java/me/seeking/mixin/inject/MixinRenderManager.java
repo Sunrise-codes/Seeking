@@ -1,8 +1,11 @@
 package me.seeking.mixin.inject;
 
 import me.seeking.mixin.interfaces.IRenderManager;
+import net.minecraft.client.renderer.entity.RenderManager;
+import org.spongepowered.asm.mixin.Mixin;
 import org.spongepowered.asm.mixin.Shadow;
 
+@Mixin(RenderManager.class)
 public class MixinRenderManager implements IRenderManager {
     @Shadow
     private double renderPosX;
