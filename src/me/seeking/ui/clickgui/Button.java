@@ -90,9 +90,9 @@ public class Button
         }
         GL11.glPushMatrix();
         GL11.glEnable(3089);
-        doGlScissor(this.x - 5, this.y - 5, 90, FontLoaders.font18.getStringHeight(this.cheat.getName().toLowerCase()) + 5);
+        doGlScissor(this.x - 5, this.y - 5, 90, FontLoaders.font18.getHeight() + 5);
         limitation.cut();
-        Gui.drawRect(this.x - 5, this.y - 5, this.x + 85, this.y + 5 + FontLoaders.font18.getStringHeight(this.cheat.getName().toLowerCase()), new Color(39, 39, 39).getRGB());
+        Gui.drawRect(this.x - 5, this.y - 5, this.x + 85, this.y + 5 + FontLoaders.font18.getHeight(), new Color(39, 39, 39).getRGB());
         if (this.cheat.isEnable()) {
             limitation.cut();
             Gui.drawRect(this.x - 4, this.y - 5, this.x + 84, this.y + 10, this.staticColor);
@@ -136,12 +136,12 @@ public class Button
     }
     
     private boolean isHovering(final int n, final int n2) {
-        final boolean b = n >= this.x && n <= this.x - 7 && n2 >= this.y && n2 <= this.y + FontLoaders.font18.getStringHeight(this.cheat.getName());
+        final boolean b = n >= this.x && n <= this.x - 7 && n2 >= this.y && n2 <= this.y + FontLoaders.font18.getHeight();
         return b;
     }
     
     public void click(int mouseX, int mouseY, int button) {
-        if (mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y - 6 && mouseY < this.y + FontLoaders.font18.getStringHeight(this.cheat.getName())) {
+        if (mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y - 6 && mouseY < this.y + FontLoaders.font18.getHeight()) {
             if (button == 0) {
                 this.cheat.setEnable(!this.cheat.isEnable());
             }

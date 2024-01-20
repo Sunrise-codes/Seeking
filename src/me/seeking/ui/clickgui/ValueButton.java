@@ -44,7 +44,7 @@ public class ValueButton
     
     public void render(final int mouseX, final int mouseY, final Limitation limitation) {
         if (!this.custom) {
-            if (mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y - 6 && mouseY < this.y + FontLoaders.font18.getStringHeight(this.value.getName()) + 6) {
+            if (mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y - 6 && mouseY < this.y + FontLoaders.font18.getHeight() + 6) {
                 if (this.opacity + 10.0 < 200.0) {
                     this.opacity += 10.0;
                 }
@@ -67,7 +67,7 @@ public class ValueButton
             else if (this.value instanceof Numbers) {
                 final Numbers v = (Numbers)this.value;
                 this.name = new StringBuilder().append(v.isInteger() ? ((Number)v.getValue()).intValue() : ((Number)v.getValue()).doubleValue()).toString();
-                if (mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y + FontLoaders.font14.getStringHeight(this.value.getName()) - 10 && mouseY < this.y + FontLoaders.font14.getStringHeight(this.value.getName()) + 2 && Mouse.isButtonDown(0)) {
+                if (mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y + FontLoaders.font14.getHeight() - 10 && mouseY < this.y + FontLoaders.font14.getHeight() + 2 && Mouse.isButtonDown(0)) {
                     final double min = v.getMinimum().doubleValue();
                     final double max = v.getMaximum().doubleValue();
                     final double inc = v.getIncrement().doubleValue();
@@ -113,8 +113,8 @@ public class ValueButton
             if (this.value instanceof Numbers) {
                 final Numbers v2 = (Numbers)this.value;
                 final double render = 82.0f * (((Number)v2.getValue()).floatValue() - v2.getMinimum().floatValue()) / (v2.getMaximum().floatValue() - v2.getMinimum().floatValue());
-                Gui.drawRect(this.x - 8, this.y + FontLoaders.font14.getStringHeight(this.value.getName()) + 2, this.x + 78, this.y + FontLoaders.font14.getStringHeight(this.value.getName()) - 9, new Color(50, 50, 50, 180).getRGB());
-                Gui.drawRect(this.x - 8, this.y + FontLoaders.font14.getStringHeight(this.value.getName()) + 2, (int)(this.x - 4 + render), this.y + FontLoaders.font14.getStringHeight(this.value.getName()) - 9, staticColor);
+                Gui.drawRect(this.x - 8, this.y + FontLoaders.font14.getHeight() + 2, this.x + 78, this.y + FontLoaders.font14.getHeight() - 9, new Color(50, 50, 50, 180).getRGB());
+                Gui.drawRect(this.x - 8, this.y + FontLoaders.font14.getHeight() + 2, (int)(this.x - 4 + render), this.y + FontLoaders.font14.getHeight() - 9, staticColor);
             }
             if (this.value instanceof Numbers) {
                 FontLoaders.font14.drawString(this.value.getName(), this.x - 7, this.y, new Color(255, 255, 255).getRGB());
@@ -126,14 +126,9 @@ public class ValueButton
 
     public void key(final char typedChar, final int keyCode) {
     }
-
-    private boolean isHovering(final int n, final int n2) {
-        final boolean b = n >= this.x && n <= this.x - 7 && n2 >= this.y && n2 <= this.y + FontLoaders.font18.getStringHeight(this.value.getName());
-        return b;
-    }
     
     public void click(final int mouseX, final int mouseY, final int button) {
-        if (!this.custom && mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y - 6 && mouseY < this.y + FontLoaders.font18.getStringHeight(this.value.getName())) {
+        if (!this.custom && mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y - 6 && mouseY < this.y + FontLoaders.font18.getHeight()) {
             if (this.value instanceof Option) {
                 final Option v = (Option)this.value;
                 v.setValue(!(boolean)v.getValue());

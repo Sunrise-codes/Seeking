@@ -50,7 +50,7 @@ public class KeyBindButton extends ValueButton
     
     @Override
     public void click(final int mouseX, final int mouseY, final int button) {
-        if (mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y - 6 && mouseY < this.y + FontLoaders.font18.getStringHeight(this.cheat.getName()) + 5 && button == 0) {
+        if (mouseX > this.x - 7 && mouseX < this.x + 85 && mouseY > this.y - 6 && mouseY < this.y + FontLoaders.font18.getHeight() + 5 && button == 0) {
             final boolean b = !this.bind;
             this.bind = b;
             ClickUi.binding = b;

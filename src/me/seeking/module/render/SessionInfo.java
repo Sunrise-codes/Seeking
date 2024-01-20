@@ -29,12 +29,12 @@ public class SessionInfo extends Module {
 
     @EventTarget
     public void on2D(EventRender2D e){
-        RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
-        Gui.drawRect(getX(), getY(), getX()+getWidth(), getY()+getHeight(),   new Color(0, 0, 0, 155).getRGB());
-        FontLoaders.iconFont18.drawStringWithShadow("C", getX() + 3, getY()+6, -1);
-        FontLoaders.font18.drawStringWithShadow("Session Info", getX() + 3 + FontLoaders.fontBig18.getStringWidth("C  "), getY()+5, -1);
-        FontLoaders.iconFont18.drawStringWithShadow("B", getX() + 3, getY() + 6 + FontLoaders.fontBig18.getHeight()+FontLoaders.font18.getHeight(), -1);
-        FontLoaders.font18.drawStringWithShadow("Play Time:"+getSpendTime(), getX() + 3 + FontLoaders.fontBig18.getStringWidth("B  "), getY() + 4.3 + FontLoaders.fontBig18.getHeight()+FontLoaders.font18.getHeight(), -1);
+        //RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
+        RenderUtil.drawRoundedRect((float) getX(), (float) getY(), (float) (getX()+getWidth()), (float) (getY()+getHeight()),   new Color(0, 0, 0, 155).getRGB(), new Color(0, 0, 0, 155).getRGB());
+        FontLoaders.iconFont18.drawString("C", getX() + 3, getY()+6, -1);
+        FontLoaders.font16.drawString("Session Info", getX() + 3 + FontLoaders.fontBig18.getStringWidth("C  "), getY()+5.5, -1);
+        FontLoaders.iconFont18.drawString("B", getX() + 3, getY() + 1.2 + FontLoaders.font18.getHeight(), -1);
+        FontLoaders.font16.drawString("Play Time:"+getSpendTime(), getX() + 3 + FontLoaders.fontBig18.getStringWidth("B  "), getY() +1.2+ FontLoaders.font18.getHeight(), -1);
     }
 
     private String getSpendTime(){

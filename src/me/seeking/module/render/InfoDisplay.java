@@ -25,8 +25,8 @@ public class InfoDisplay extends Module {
     @EventTarget
     public void on2D(EventRender2D e){
         setWidth(8+FontLoaders.fontBig18.getStringWidth("SEEKING ")+FontLoaders.font18.getStringWidth("| "+mc.getSession().getUsername()+" | "+LocalTime.now().format(DateTimeFormatter.ofPattern("HH:mm:ss"))));
-        RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
-        RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
+//        RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
+//        RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
         Gui.drawRect(getX(), getY(), getX()+getWidth(), getY()+getHeight(), new Color(0, 0, 0).getRGB());
         FontLoaders.fontBig18.drawString("SEEKING", (float) (getX()+4), (float) getY()+4, new Color(0, 164, 255).getRGB());
         FontLoaders.fontBig18.drawString("SEEKING", (float) (getX()+3), (float) getY()+3, -1);

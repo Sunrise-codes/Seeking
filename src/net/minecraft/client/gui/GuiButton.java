@@ -126,9 +126,9 @@ public class GuiButton extends Gui {
                 }
 
 
-            RenderUtil.drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, new Color((int) red, (int) green, (int) blue, (int) alpha).getRGB());
-            RenderUtil.drawShadow(xPosition, yPosition, width, height);
-            RenderUtil.drawShadow(xPosition, yPosition, width, height);
+            RenderUtil.drawRoundedRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, new Color((int) red, (int) green, (int) blue, (int) alpha).getRGB(), new Color((int) red, (int) green, (int) blue, (int) alpha).getRGB());
+//            RenderUtil.drawShadow(xPosition, yPosition, width, height);
+//            RenderUtil.drawShadow(xPosition, yPosition, width, height);
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 

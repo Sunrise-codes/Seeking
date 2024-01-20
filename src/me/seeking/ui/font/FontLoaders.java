@@ -1,58 +1,35 @@
 package me.seeking.ui.font;
 
-import java.awt.Font;
-import java.io.InputStream;
-
 import net.minecraft.client.Minecraft;
 import net.minecraft.util.ResourceLocation;
 
-public abstract class FontLoaders {
-	public static CFontRenderer font14;
-	public static CFontRenderer font16;
-	public static CFontRenderer font18;
-	public static CFontRenderer fontBig18;
-	public static CFontRenderer iconFont18;
-	public static Font getFont(int size) {
-		Font font;
-		try {
-			InputStream is = FontLoaders.class.getResourceAsStream("/assets/minecraft/seeking/font/normal.ttf");
-			font = Font.createFont(0, is);
-			font = font.deriveFont(0, size);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			System.out.println("Error loading font");
-			font = new Font("default", 0, size);
-		}
-		return font;
-	}
+import java.awt.*;
 
-	public static Font getBigFont(int size) {
-		Font font;
-		try {
-			InputStream is = Minecraft.getMinecraft().getResourceManager()
-					.getResource(new ResourceLocation("seeking/font/big.otf")).getInputStream();
-			font = Font.createFont(0, is);
-			font = font.deriveFont(0, size);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			System.out.println("Error loading font");
-			font = new Font("default", 0, size);
-		}
-		return font;
-	}
+public class FontLoaders {
+    public static FontRender font14;
+    public static FontRender font16;
+    public static FontRender font18;
+    public static FontRender fontBig18;
+    public static FontRender iconFont18;
 
-	public static Font getIconFont(int size) {
-		Font font;
-		try {
-			InputStream is = Minecraft.getMinecraft().getResourceManager()
-					.getResource(new ResourceLocation("seeking/font/ico.ttf")).getInputStream();
-			font = Font.createFont(0, is);
-			font = font.deriveFont(0, size);
-		} catch (Exception ex) {
-			ex.printStackTrace();
-			System.out.println("Error loading font");
-			font = new Font("default", 0, size);
-		}
-		return font;
-	}
+    public static void init() throws Throwable {
+        font14 = createByResource("normal.ttf",14f,true);
+        font16 = createByResource("normal.ttf",16f,true);
+        font18 = createByResource("normal.ttf",18f,true);
+        fontBig18 = createByResource("big.otf",18f,true);
+        iconFont18 = createByResource("ico.ttf",18f,true);
+    }
+
+    private static FontRender createByName(String fontName, int size, boolean antiAliasing) {
+        return new FontRender(new Font(fontName,Font.PLAIN,size), antiAliasing);
+    }
+
+    public static FontRender createByResource(String resourceName, float size, boolean antiAliasing) throws Throwable {
+        return new FontRender(
+                Font.createFont(
+                        Font.TRUETYPE_FONT,
+                        Minecraft.getMinecraft().getResourceManager().getResource(new ResourceLocation("seeking/font/"+resourceName)).getInputStream()
+                ).deriveFont(Font.PLAIN, size), antiAliasing
+        );
+    }
 }

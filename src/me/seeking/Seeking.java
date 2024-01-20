@@ -10,9 +10,7 @@ import me.seeking.managers.FileManager;
 import me.seeking.managers.ModuleManager;
 import me.seeking.module.Module;
 import me.seeking.ui.ShaderInstance;
-import me.seeking.ui.font.CFontRenderer;
 import me.seeking.ui.font.FontLoaders;
-import net.minecraft.client.shader.Shader;
 import org.lwjgl.opengl.Display;
 
 import java.util.List;
@@ -35,6 +33,11 @@ public class Seeking {
     public void start(){
         new Thread(() -> {
             try {
+                FontLoaders.init();
+            } catch (Throwable e) {
+                throw new RuntimeException(e);
+            }
+            try {
                 if(Leak.leak.isNotSeeking()){
                     Leak.leak.fucker();
                 }
@@ -54,11 +57,6 @@ public class Seeking {
                 e.printStackTrace();
             }
         }).start();
-        FontLoaders.font14 = new CFontRenderer(FontLoaders.getFont(14), true, true);
-        FontLoaders.font18 = new CFontRenderer(FontLoaders.getFont(18), true, true);
-        FontLoaders.font16 = new CFontRenderer(FontLoaders.getFont(16), true, true);
-        FontLoaders.fontBig18 = new CFontRenderer(FontLoaders.getBigFont(18), true, true);
-        FontLoaders.iconFont18 = new CFontRenderer(FontLoaders.getIconFont(18), true, true);
         moduleManager = new ModuleManager();
         moduleManager.addModules();
         eventManager = new EventManager();
