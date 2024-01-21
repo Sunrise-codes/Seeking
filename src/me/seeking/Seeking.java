@@ -1,6 +1,8 @@
 package me.seeking;
 
 import de.florianmichael.viamcp.ViaMCP;
+import me.miliblue.rintaro.CutsomException;
+import me.miliblue.rintaro.Loader;
 import me.seeking.event.EventManager;
 import me.seeking.event.EventTarget;
 import me.seeking.event.events.EventKeyboard;
@@ -11,8 +13,12 @@ import me.seeking.managers.ModuleManager;
 import me.seeking.module.Module;
 import me.seeking.ui.ShaderInstance;
 import me.seeking.ui.font.FontLoaders;
+import net.minecraft.client.Minecraft;
 import org.lwjgl.opengl.Display;
 
+import java.io.File;
+import java.io.IOException;
+import java.lang.reflect.InvocationTargetException;
 import java.util.List;
 
 /**
@@ -57,6 +63,12 @@ public class Seeking {
                 e.printStackTrace();
             }
         }).start();
+        try {
+            Loader.getInstance().loadMods(Minecraft.getMinecraft().mcDataDir.getAbsolutePath().replace("\\.", "").replace("\\", "/")+"/Plugins");
+        } catch (CutsomException | NoSuchMethodException | IOException | InvocationTargetException |
+                 IllegalAccessException | ClassNotFoundException | InstantiationException e) {
+            throw new RuntimeException(e);
+        }
         moduleManager = new ModuleManager();
         moduleManager.addModules();
         eventManager = new EventManager();
