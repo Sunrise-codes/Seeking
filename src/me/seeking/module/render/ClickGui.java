@@ -3,6 +3,7 @@ package me.seeking.module.render;
 import me.seeking.module.Module;
 import me.seeking.ui.clickgui.ClickGraphicsUi;
 import me.seeking.ui.clickgui.ClickUi;
+import net.montoyo.mcef.example.BrowserScreen;
 import org.lwjgl.input.Keyboard;
 
 /**
@@ -17,6 +18,6 @@ public class ClickGui extends Module {
 
     @Override
     public void onEnable(){
-        mc.displayGuiScreen(new ClickGraphicsUi());
+        mc.displayGuiScreen(new BrowserScreen());
     }
 }

@@ -40,6 +40,7 @@ import de.florianmichael.viamcp.fixes.AttackOrder;
 import me.seeking.Seeking;
 import me.seeking.event.events.EventClickMouse;
 import me.seeking.event.events.EventKeyboard;
+import me.seeking.event.events.EventTick;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
 import net.minecraft.client.audio.MusicTicker;
@@ -990,7 +991,7 @@ public class Minecraft implements IThreadListener, IPlayerUsage
         {
             this.shutdown();
         }
-
+        new EventTick().call();
         if (this.isGamePaused && this.theWorld != null)
         {
             float f = this.timer.renderPartialTicks;

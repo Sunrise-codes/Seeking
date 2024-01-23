@@ -14,6 +14,7 @@ import me.seeking.module.Module;
 import me.seeking.ui.ShaderInstance;
 import me.seeking.ui.font.FontLoaders;
 import net.minecraft.client.Minecraft;
+import net.montoyo.mcef.MCEF;
 import org.lwjgl.opengl.Display;
 
 import java.io.File;
@@ -78,6 +79,8 @@ public class Seeking {
         commandManager.loadCommands();
         loadCFG();
         si = new ShaderInstance();
+        //Load MCEF
+        MCEF.INSTANCE.init();
         //Set Title
         Display.setTitle("Seeking 0.2 - (Minecraft 1.8.9)");
     }
