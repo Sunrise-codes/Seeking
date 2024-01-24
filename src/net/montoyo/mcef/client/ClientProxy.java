@@ -51,11 +51,11 @@ public class ClientProxy extends BaseProxy {
 		RemoteConfig cfg = new RemoteConfig();
 		
 		cfg.load();
-		if(!cfg.downloadMissing(uf)) {
-			Log.warning("Going in virtual mode; couldn't download resources.");
-			VIRTUAL = true;
-			return;
-		}
+//		if(!cfg.downloadMissing(uf)) {
+//			Log.warning("Going in virtual mode; couldn't download resources.");
+//			VIRTUAL = true;
+//			return;
+//		}
 		
 		updateStr = cfg.getUpdateString();
 		uf.dispose();
@@ -94,8 +94,6 @@ public class ClientProxy extends BaseProxy {
 		try {
 			cefApp = CefApp.getInstance(settings);
 			cefApp.myLoc = ROOT.replace('/', File.separatorChar);
-			
-			CefApp.addAppHandler(new AppHandler());
 			cefClient = cefApp.createClient();
 		} catch(Throwable t) {
 			Log.error("Going in virtual mode; couldn't initialize CEF.");

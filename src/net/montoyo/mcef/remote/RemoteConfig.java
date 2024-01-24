@@ -147,6 +147,7 @@ public class RemoteConfig {
 				continue;
 			
 			resources.add(new Resource(e.getKey(), e.getValue().getAsString()));
+			System.out.printf("[DEBUG] Resource Key:"+e.getKey()+"   SUM:"+e.getValue().getAsString()+"\n");
 		}
 		
 		JsonElement ext = cfg.get("extract");

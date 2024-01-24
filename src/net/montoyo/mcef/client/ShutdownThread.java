@@ -5,10 +5,11 @@ import java.lang.reflect.Modifier;
 import java.util.ArrayList;
 
 import org.cef.CefApp;
-import org.cef.browser.CefBrowserOsr;
+import org.cef.browser.CefBrowser;
 
 import net.minecraft.client.Minecraft;
 import net.montoyo.mcef.utilities.Log;
+import org.cef.browser.CefBrowserOsr;
 
 public class ShutdownThread extends Thread {
 	
