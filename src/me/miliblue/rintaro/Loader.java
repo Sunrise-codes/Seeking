@@ -1,5 +1,9 @@
 package me.miliblue.rintaro;
 
+import me.seeking.Seeking;
+import me.seeking.managers.Command;
+import org.lwjgl.opengl.Display;
+
 import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
@@ -15,6 +19,7 @@ import java.util.jar.JarFile;
 
 public class Loader {
     private static Loader self = new Loader();
+    public static int modCount = 0;
     public static Loader getInstance(){
         return self;
     }
@@ -48,6 +53,11 @@ public class Loader {
                             Method method = c.getDeclaredMethod("init");
                             method.setAccessible(true);
                             method.invoke(c.newInstance());
+                            modCount += 1;
+                            Display.setTitle("Seeking 0.2 - (Minecraft 1.8.9) - Loaded "+Loader.modCount+" Plugins.");
+                        }
+                        if(Command.class.isAssignableFrom(c)){
+                            Seeking.instance.commandManager.addCommand((Command) c.newInstance());
                         }
                     }
                 }

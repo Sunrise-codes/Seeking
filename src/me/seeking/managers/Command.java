@@ -11,4 +11,8 @@ public interface Command {
 	/** This method is used to so the user knows how to use that command. **/
 	String usage();
 
+	/** This method is used for Rintaro plugins. **/
+	 default String[] name(){
+		return new String[]{"Null"};
+	}
 }

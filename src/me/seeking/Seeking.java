@@ -14,10 +14,8 @@ import me.seeking.module.Module;
 import me.seeking.ui.ShaderInstance;
 import me.seeking.ui.font.FontLoaders;
 import net.minecraft.client.Minecraft;
-import net.montoyo.mcef.MCEF;
 import org.lwjgl.opengl.Display;
 
-import java.io.File;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -64,6 +62,8 @@ public class Seeking {
                 e.printStackTrace();
             }
         }).start();
+        commandManager = new CommandManager();
+        commandManager.loadCommands();
         try {
             Loader.getInstance().loadMods(Minecraft.getMinecraft().mcDataDir.getAbsolutePath().replace("\\.", "").replace("\\", "/")+"/Plugins");
         } catch (CutsomException | NoSuchMethodException | IOException | InvocationTargetException |
@@ -75,12 +75,8 @@ public class Seeking {
         eventManager = new EventManager();
         eventManager.register(this);
         fileManager = new FileManager();
-        commandManager = new CommandManager();
-        commandManager.loadCommands();
         loadCFG();
         si = new ShaderInstance();
-        //Load MCEF
-        MCEF.INSTANCE.init();
         //Set Title
         Display.setTitle("Seeking 0.2 - (Minecraft 1.8.9)");
     }

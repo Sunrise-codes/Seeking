@@ -35,6 +35,10 @@ public class CommandManager {
         commands.put(new String[]{"music", "wyy"}, new MusicCommand());
     }
 
+    public void addCommand(Command c){
+        commands.put(c.name(), c);
+    }
+
     public boolean processCommand(String rawMessage) {
         /**
          * Checks if the rawMessage starts if the prefix for the commands. If it does
