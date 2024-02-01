@@ -30,7 +30,7 @@ public class SessionInfo extends Module {
     @EventTarget
     public void on2D(EventRender2D e){
         //RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
-        RenderUtil.drawRoundedRect((float) getX(), (float) getY(), (float) (getX()+getWidth()), (float) (getY()+getHeight()),   new Color(0, 0, 0, 155).getRGB(), new Color(0, 0, 0, 155).getRGB());
+        RenderUtil.drawRect((float) getX(), (float) getY(), (float) (getX()+getWidth()), (float) (getY()+getHeight()), new Color(0, 0, 0, 155).getRGB());
         FontLoaders.iconFont18.drawString("C", getX() + 3, getY()+6, -1);
         FontLoaders.font16.drawString("Session Info", getX() + 3 + FontLoaders.fontBig18.getStringWidth("C  "), getY()+5.5, -1);
         FontLoaders.iconFont18.drawString("B", getX() + 3, getY() + 1.2 + FontLoaders.font18.getHeight(), -1);

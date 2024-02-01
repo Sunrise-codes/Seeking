@@ -19,6 +19,7 @@ import static org.lwjgl.opengl.GL11.glPopMatrix;
 
 /**
  * This file is a part of Seeking Client.
+ *  some method skid from Dot client
  */
 public class RenderUtil {
     public static float fps;
@@ -229,38 +230,16 @@ public class RenderUtil {
         tessellator.draw();
     }
 
-    public static void drawRoundedRect(float x, float y, float x1, float y1, int borderC, int insideC) {
-        enableGL2D();
-        GL11.glScalef((float) 0.5f, (float) 0.5f, (float) 0.5f);
-        drawVLine(x *= 2.0f, (y *= 2.0f) + 1.0f, (y1 *= 2.0f) - 2.0f, borderC);
-        drawVLine((x1 *= 2.0f) - 1.0f, y + 1.0f, y1 - 2.0f, borderC);
-        drawHLine(x + 2.0f, x1 - 3.0f, y, borderC);
-        drawHLine(x + 2.0f, x1 - 3.0f, y1 - 1.0f, borderC);
-        drawHLine(x + 1.0f, x + 1.0f, y + 1.0f, borderC);
-        drawHLine(x1 - 2.0f, x1 - 2.0f, y + 1.0f, borderC);
-        drawHLine(x1 - 2.0f, x1 - 2.0f, y1 - 2.0f, borderC);
-        drawHLine(x + 1.0f, x + 1.0f, y1 - 2.0f, borderC);
-        drawRect(x + 1.0f, y + 1.0f, x1 - 1.0f, y1 - 1.0f, insideC);
-        GL11.glScalef((float) 2.0f, (float) 2.0f, (float) 2.0f);
-        disableGL2D();
-        Gui.drawRect(0, 0, 0, 0, 0);
-    }
-
-    public static void drawHLine(float x, float y, float x1, int y1) {
-        if (y < x) {
-            float var5 = x;
-            x = y;
-            y = var5;
-        }
-        drawRect(x, x1, y + 1.0f, x1 + 1.0f, y1);
-    }
-
-    public static void drawVLine(float x, float y, float x1, int y1) {
-        if (x1 < y) {
-            float var5 = y;
-            y = x1;
-            x1 = var5;
-        }
-        drawRect(x, y + 1.0f, x + 1.0f, x1, y1);
+    public static void drawImage(ResourceLocation image, int x, int y, int width, int height) {
+        GL11.glDisable((int) 2929);
+        GL11.glEnable((int) 3042);
+        GL11.glDepthMask((boolean) false);
+        OpenGlHelper.glBlendFunc((int) 770, (int) 771, (int) 1, (int) 0);
+        GL11.glColor4f((float) 1.0f, (float) 1.0f, (float) 1.0f, (float) 1.0f);
+        Minecraft.getMinecraft().getTextureManager().bindTexture(image);
+        Gui.drawModalRectWithCustomSizedTexture((int) x, (int) y, (float) 0.0f, (float) 0.0f, (int) width, (int) height, (float) width, (float) height);
+        GL11.glDepthMask((boolean) true);
+        GL11.glDisable((int) 3042);
+        GL11.glEnable((int) 2929);
     }
 }

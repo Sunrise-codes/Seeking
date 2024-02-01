@@ -1,8 +1,10 @@
 package net.minecraft.client.gui;
 
+import me.seeking.utils.AnimationUtil;
 import net.minecraft.client.Minecraft;
 import net.minecraft.client.audio.PositionedSoundRecord;
 import net.minecraft.client.audio.SoundHandler;
+import net.minecraft.client.renderer.entity.Render;
 import net.minecraft.util.ResourceLocation;
 import me.seeking.module.client.CustomColor;
 import me.seeking.ui.font.FontLoaders;
@@ -61,8 +63,6 @@ public class GuiButton extends Gui {
     }
 
     public GuiButton(int buttonId, int x, int y, int widthIn, int heightIn, String buttonText) {
-        this.width = 200;
-        this.height = 20;
         this.enabled = true;
         this.visible = true;
         this.id = buttonId;
@@ -92,22 +92,17 @@ public class GuiButton extends Gui {
     /**
      * Draws this button to the screen.
      */
+    double tempW;
     public void drawButton(Minecraft mc, int mouseX, int mouseY) {
         if (this.visible) {
             this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
-            if (this.hovered) {
-                red = RenderUtil.toanim(red, CustomColor.getColor().getRed(), 4, 0.1f);
-                green = RenderUtil.toanim(green, CustomColor.getColor().getGreen(), 4, 0.1f);
-                blue = RenderUtil.toanim(blue, CustomColor.getColor().getBlue(), 4, 0.1f);
-                alpha = RenderUtil.toanim(alpha, 128, 4, 0.1f);
-            } else {
-                red = RenderUtil.toanim(red, 0, 4, 0.1f);
-                green = RenderUtil.toanim(green, 0, 4, 0.1f);
-                blue = RenderUtil.toanim(blue, 0, 4, 0.1f);
-                alpha = RenderUtil.toanim(alpha, 64, 4, 0.1f);
+            if(hovered){
+                tempW = RenderUtil.getAnimationStateSmooth(width, tempW, 0.14f);
+            }else if(tempW > 0){
+                tempW = RenderUtil.getAnimationStateSmooth(0, tempW, 0.14f);
             }
-
-                if(mc.thePlayer != null && mc.theWorld != null){
+            Gui.drawRect(this.xPosition, this.yPosition, this.xPosition + this.tempW, this.yPosition + this.height, new Color(0, 166, 255).getRGB());
+            if(mc.thePlayer != null && mc.theWorld != null){
 
                 }else {
                     mc.getFramebuffer().bindFramebuffer(false);
@@ -126,9 +121,7 @@ public class GuiButton extends Gui {
                 }
 
 
-            RenderUtil.drawRoundedRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, new Color((int) red, (int) green, (int) blue, (int) alpha).getRGB(), new Color((int) red, (int) green, (int) blue, (int) alpha).getRGB());
-//            RenderUtil.drawShadow(xPosition, yPosition, width, height);
-//            RenderUtil.drawShadow(xPosition, yPosition, width, height);
+            Gui.drawRect(this.xPosition, this.yPosition, this.xPosition + this.width, this.yPosition + this.height, new Color(0, 0, 0, 100).getRGB());
             this.mouseDragged(mc, mouseX, mouseY);
             int j = 14737632;
 
@@ -138,7 +131,7 @@ public class GuiButton extends Gui {
                 j = new Color(255, 255, 160).getRGB();
             }
 
-            FontLoaders.font16.drawCenteredString(this.displayString, this.xPosition + this.width / 2, this.yPosition + (this.height - 4) / 2, j);
+            FontLoaders.font16.drawCenteredString(this.displayString, this.xPosition + this.width / 2 , this.yPosition + (this.height - 8) / 2, j);
         }
     }
 
