@@ -39,7 +39,7 @@ public class KeyDisplay extends Module {
         FontLoaders.font16.drawString(Keyboard.getKeyName(mc.gameSettings.keyBindLeft.getKeyCode()).toUpperCase(), (float) (getX() + 7), (float) (getY()+27), -1);
         //Back
         RenderUtil.drawShadow((float) (getX() + 21), (float) getY()+21, 20, 20);
-        RenderUtil.drawRect((float) (getX()+21), (float) (getY()+21), (float) (getX()+20+21), (float) (getY()+20+20.5), mc.gameSettings.keyBindBack.isKeyDown()? new Color(255, 255, 255, 135).getRGB() : new Color(0, 0, 0, 135).getRGB());
+        RenderUtil.drawRect((float) (getX()+21), (float) (getY()+21), (float) (getX()+20+21), (float) (getY()+20+21), mc.gameSettings.keyBindBack.isKeyDown()? new Color(255, 255, 255, 135).getRGB() : new Color(0, 0, 0, 135).getRGB());
         FontLoaders.font16.drawString(Keyboard.getKeyName(mc.gameSettings.keyBindBack.getKeyCode()).toUpperCase(), (float) (getX() + 28.5), (float) (getY()+27), -1);
     }
 }

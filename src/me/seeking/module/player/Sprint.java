@@ -3,6 +3,7 @@ package me.seeking.module.player;
 import me.seeking.event.EventTarget;
 import me.seeking.event.events.EventUpdate;
 import me.seeking.module.Module;
+import net.minecraft.client.settings.KeyBinding;
 import org.lwjgl.input.Keyboard;
 
 /**
@@ -16,8 +17,6 @@ public class Sprint extends Module {
 
     @EventTarget
     public void onUpdate(EventUpdate e){
-        if(mc.gameSettings.keyBindForward.isKeyDown() && mc.thePlayer.getFoodStats().getFoodLevel() > 6 && !(mc.gameSettings.keyBindBack.isKeyDown() || mc.gameSettings.keyBindLeft.isKeyDown() || mc.gameSettings.keyBindRight.isKeyDown())){
-            mc.thePlayer.setSprinting(true);
-        }
+        KeyBinding.setKeyBindState(mc.gameSettings.keyBindSprint.getKeyCode(), true);
     }
 }

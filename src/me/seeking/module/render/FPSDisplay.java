@@ -26,6 +26,6 @@ public class FPSDisplay extends Module {
     public void render2D(EventRender2D e){
         RenderUtil.drawShadow((float) getX(), (float) getY(), (float) getWidth(), (float) getHeight());
         Gui.drawRect(getX(), getY(), getX()+getWidth(), getY()+getHeight(), new Color(0, 0, 0, 135).getRGB());
-        FontLoaders.font16.drawStringWithShadow(mc.getDebugFPS()+" FPS", (float) (getX()+10), (float) (getY()+8), -1);
+        FontLoaders.font16.drawString(mc.getDebugFPS()+" FPS", (float) (getX()+9), (float) (getY()+6), -1);
     }
 }

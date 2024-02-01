@@ -97,9 +97,9 @@ public class GuiButton extends Gui {
         if (this.visible) {
             this.hovered = mouseX >= this.xPosition && mouseY >= this.yPosition && mouseX < this.xPosition + this.width && mouseY < this.yPosition + this.height;
             if(hovered){
-                tempW = RenderUtil.getAnimationStateSmooth(width, tempW, 0.14f);
+                tempW = RenderUtil.getAnimationStateSmooth(width, tempW, 12f/Minecraft.getDebugFPS());
             }else if(tempW > 0){
-                tempW = RenderUtil.getAnimationStateSmooth(0, tempW, 0.14f);
+                tempW = RenderUtil.getAnimationStateSmooth(0, tempW, 12f/Minecraft.getDebugFPS());
             }
             Gui.drawRect(this.xPosition, this.yPosition, this.xPosition + this.tempW, this.yPosition + this.height, new Color(0, 166, 255).getRGB());
             if(mc.thePlayer != null && mc.theWorld != null){
@@ -130,6 +130,7 @@ public class GuiButton extends Gui {
             } else if (this.hovered) {
                 j = new Color(255, 255, 160).getRGB();
             }
+            RenderUtil.drawShadow(xPosition, yPosition, width, height);
 
             FontLoaders.font16.drawCenteredString(this.displayString, this.xPosition + this.width / 2 , this.yPosition + (this.height - 8) / 2, j);
         }
