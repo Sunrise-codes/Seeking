@@ -81,7 +81,7 @@ public class Seeking {
         BlurUtil.onFrameBufferResize(new ScaledResolution(Minecraft.getMinecraft()).getScaledWidth(), new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight());
         si = new ShaderInstance();
         //Set Title
-        Display.setTitle("Seeking 0.2 - (Minecraft 1.8.9)");
+        //Display.setTitle("Seeking 0.2 - (Minecraft 1.8.9)");
     }
 
     /**
