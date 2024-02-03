@@ -13,7 +13,9 @@ import me.seeking.managers.ModuleManager;
 import me.seeking.module.Module;
 import me.seeking.ui.ShaderInstance;
 import me.seeking.ui.font.FontLoaders;
+import me.seeking.utils.BlurUtil;
 import net.minecraft.client.Minecraft;
+import net.minecraft.client.gui.ScaledResolution;
 import org.lwjgl.opengl.Display;
 
 import java.io.IOException;
@@ -76,6 +78,7 @@ public class Seeking {
         eventManager.register(this);
         fileManager = new FileManager();
         loadCFG();
+        BlurUtil.onFrameBufferResize(new ScaledResolution(Minecraft.getMinecraft()).getScaledWidth(), new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight());
         si = new ShaderInstance();
         //Set Title
         Display.setTitle("Seeking 0.2 - (Minecraft 1.8.9)");
