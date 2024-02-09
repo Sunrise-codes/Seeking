@@ -227,7 +227,7 @@ public class GuiMainMenu extends GuiScreen implements GuiYesNoCallback
     {
         this.buttonList.add(new GuiButton(1, this.width / 2 - 75, p_73969_1_, 150, 20, I18n.format("menu.singleplayer", new Object[0])));
         this.buttonList.add(new GuiButton(2, this.width / 2 - 75, p_73969_1_ + p_73969_2_ * 1, 150, 20, I18n.format("menu.multiplayer", new Object[0])));
-        this.buttonList.add(new GuiButton(3, this.width / 2 - 75, p_73969_1_+p_73969_2_ * 2 ,150, 20, I18n.format("ResetSession", new Object[0])));
+        this.buttonList.add(new GuiButton(3, this.width / 2 - 75, p_73969_1_+p_73969_2_ * 2 ,150, 20, I18n.format("Login through Github", new Object[0])));
     }
 
     private void addDemoButtons(int p_73972_1_, int p_73972_2_)

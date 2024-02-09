@@ -27,6 +27,7 @@ public class Loader {
     public void loadMods(String modPath) throws CutsomException, NoSuchMethodException, IOException, InvocationTargetException, IllegalAccessException, ClassNotFoundException, InstantiationException {
         //Load Mods from a Folder
         File folder = new File(modPath);
+        Display.setTitle("Seeking 0.4 - (Minecraft 1.8.9) - Loaded "+Loader.modCount+" Plugins.");
         if(folder.exists()) {
             if (folder.isDirectory()) {//Anti sb
                 File[] files = folder.listFiles();
@@ -47,15 +48,14 @@ public class Loader {
                         } finally {
                             method.setAccessible(false);
                         }
-
-                        modCount += 1;
-                        Display.setTitle("Seeking 0.2 - (Minecraft 1.8.9) - Loaded "+Loader.modCount+" Plugins. - 您可能是正版卡网的受害者");
                     }
                     for (Class c : getClassesNameByJar(f.getPath())){
                         if(PluginBase.class.isAssignableFrom(c)) {
                             Method method = c.getDeclaredMethod("init");
                             method.setAccessible(true);
                             method.invoke(c.newInstance());
+                            modCount+=1;
+                            Display.setTitle("Seeking 0.4 - (Minecraft 1.8.9) - Loaded "+Loader.modCount+" Plugins.");
                         }
                         if(Command.class.isAssignableFrom(c)){
                             Seeking.instance.commandManager.addCommand((Command) c.newInstance());

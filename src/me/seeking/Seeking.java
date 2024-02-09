@@ -6,6 +6,8 @@ import me.miliblue.rintaro.Loader;
 import me.seeking.event.EventManager;
 import me.seeking.event.EventTarget;
 import me.seeking.event.events.EventKeyboard;
+import me.seeking.github.GithubLogin;
+import me.seeking.github.GithubUser;
 import me.seeking.leak.Leak;
 import me.seeking.managers.CommandManager;
 import me.seeking.managers.FileManager;
@@ -13,11 +15,10 @@ import me.seeking.managers.ModuleManager;
 import me.seeking.module.Module;
 import me.seeking.ui.ShaderInstance;
 import me.seeking.ui.font.FontLoaders;
-import me.seeking.utils.BlurUtil;
+import me.seeking.utils.TrayUtil;
 import net.minecraft.client.Minecraft;
-import net.minecraft.client.gui.ScaledResolution;
-import org.lwjgl.opengl.Display;
 
+import java.awt.*;
 import java.io.IOException;
 import java.lang.reflect.InvocationTargetException;
 import java.util.List;
@@ -33,12 +34,19 @@ public class Seeking {
     public FileManager fileManager;
     public CommandManager commandManager;
     public ShaderInstance si;
+    public GithubUser user;
+    public GithubLogin githubLogin;
 
     /**
      * 当方块人启动的时候会调用这个方法
      */
     public void start(){
         new Thread(() -> {
+            try {
+                githubLogin = new GithubLogin();
+            } catch (IOException e) {
+                throw new RuntimeException(e);
+            }
             try {
                 FontLoaders.init();
             } catch (Throwable e) {
@@ -78,10 +86,15 @@ public class Seeking {
         eventManager.register(this);
         fileManager = new FileManager();
         loadCFG();
-        BlurUtil.onFrameBufferResize(new ScaledResolution(Minecraft.getMinecraft()).getScaledWidth(), new ScaledResolution(Minecraft.getMinecraft()).getScaledHeight());
         si = new ShaderInstance();
-        //Set Title
-        //Display.setTitle("Seeking 0.2 - (Minecraft 1.8.9)");
+        try {
+            TrayUtil.init();
+        }catch (Exception e){
+            e.printStackTrace();
+        }
+        if(TrayUtil.trayIcon != null){
+            TrayUtil.trayIcon.displayMessage("Seeking Client", "Seeking finished loading.", TrayIcon.MessageType.INFO);
+        }
     }
 
     /**

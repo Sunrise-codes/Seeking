@@ -4,8 +4,9 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonObject;
-import javazoom.jl.decoder.JavaLayerException;
-import javazoom.jl.player.Player;
+import javafx.embed.swing.JFXPanel;
+import javafx.scene.media.Media;
+import javafx.scene.media.MediaPlayer;
 import java.io.*;
 import java.net.*;
 
@@ -18,7 +19,7 @@ import static me.drqzszn.ChineseURLEncoder.encodeChineseToURL;
  * This file is a part of Seeking Client.
  */
 public class MusicCommand implements Command {
-    public static Player player;
+    public static MediaPlayer player;
     @Override
     public boolean run(String[] args) {
         if(args.length == 3) {
@@ -53,7 +54,7 @@ public class MusicCommand implements Command {
             }
              else if (args[1].equals("stop")) {
                  if (player != null) {
-                     player.close();
+                     player.stop();
                      player = null;
                  } else
                      PlayerUtil.tellPlayer("我操你妈的 播放器都没实例你stop你妈生命？");
@@ -96,35 +97,9 @@ public class MusicCommand implements Command {
     }
     //播放url音乐
     public static void play(String url) throws MalformedURLException {
-        URL url1 = new URL(url);
-        new Thread(() -> {
-            BufferedInputStream buffer = null;
-
-            try {
-                URLConnection connection = url1.openConnection();
-
-                buffer = new BufferedInputStream(connection.getInputStream());
-
-                if (buffer.read() == -1) {
-                    PlayerUtil.tellPlayer("不可用的url:" + url);
-                }
-
-                player = new Player(buffer);
-                player.play();
-            } catch (IOException e) {
-                e.printStackTrace();
-            } catch (JavaLayerException e) {
-                e.printStackTrace();
-            } finally {
-                if (buffer != null) {
-                    try {
-                        buffer.close();
-                    } catch (IOException e) {
-                        e.printStackTrace();
-                    }
-                }
-            }
-        }).start();
+        new JFXPanel();//Init jfx toolkit
+        player = new MediaPlayer(new Media(url));
+        player.play();
     }
     private static String sendGetRequest(String url) throws IOException {
         HttpURLConnection connection = null;
