@@ -1,4 +1,4 @@
-# So I gave up kotlin ;)
+# So I gave up kotlin @####@
 
 # Seeking Client
-A simple Minecraft Client with Material Design 3(?)
+A simple Minecraft Client ;w;
