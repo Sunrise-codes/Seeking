@@ -75,7 +75,7 @@ public class Seeking {
         commandManager = new CommandManager();
         commandManager.loadCommands();
         try {
-            Loader.getInstance().loadMods(Minecraft.getMinecraft().mcDataDir.getAbsolutePath().replace("\\.", "").replace("\\", "/")+"/Plugins");
+            Loader.getInstance().loadMods(Minecraft.getMinecraft().mcDataDir.getPath()+"/Plugins");
         } catch (CutsomException | NoSuchMethodException | IOException | InvocationTargetException |
                  IllegalAccessException | ClassNotFoundException | InstantiationException e) {
             throw new RuntimeException(e);

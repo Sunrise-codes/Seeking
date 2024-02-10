@@ -41,6 +41,7 @@ import me.seeking.Seeking;
 import me.seeking.event.events.EventClickMouse;
 import me.seeking.event.events.EventKeyboard;
 import me.seeking.event.events.EventTick;
+import me.seeking.ui.GuiOOBE;
 import me.seeking.utils.BlurUtil;
 import net.minecraft.block.Block;
 import net.minecraft.block.material.Material;
